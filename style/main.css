@@ -45,9 +45,9 @@ body {
     margin: 1em;
     padding: 0.7em;
     padding-top: 0.4em;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     text-align: center;
-    backdrop-filter: blur(4px);
+    
 }
 legend {
     font-size: 120%;
