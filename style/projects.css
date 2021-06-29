@@ -1,0 +1,52 @@
+.project-window {
+    width: auto;
+    min-width: 7em;
+    max-width: 750px;
+    height: auto;
+    margin: 1em;
+    padding: 0.7em;
+    padding-top: 0.4em;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+}
+h4 {
+    margin: 0;
+}
+h5 {
+    margin: 0.4em;
+}
+
+.project-window p {
+    display: block;
+    margin-top: 0;
+    font-size: 0.9em;
+}
+
+.project-window a {
+    color: rgb(190, 190, 190);
+}
+.project-window a:hover {
+    color: #fff;
+}
+
+@media only screen 
+and (max-width: 1000px) {
+    .wrapper {
+        height: auto;
+        flex-direction: column;
+    }
+    .linewrapper {
+        height: auto;
+        flex-direction: column;
+    }
+    .window {
+        width: 85%;
+    }
+    h1 {
+        font-size: 1.7em;
+    }
+}
