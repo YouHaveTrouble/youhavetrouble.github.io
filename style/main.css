@@ -52,6 +52,12 @@ legend {
     font-size: 120%;
     text-align: center;
 }
+
+.footer {
+    font-size: 0.7em;
+    color: rgba(128, 128, 128, 0.705);
+    cursor: default;
+}
 .window a {
     color: rgb(190, 190, 190);
 }
@@ -81,6 +87,7 @@ h1 {
     -webkit-text-fill-color: transparent; 
     -moz-text-fill-color: transparent;
   }
+
 @media only screen 
 and (max-width: 1000px) {
     .wrapper {
