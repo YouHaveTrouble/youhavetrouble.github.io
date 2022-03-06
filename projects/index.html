@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/style/main.css">
     <link rel="stylesheet" href="/style/projects.css">
     <meta charset="UTF-8">
-    <script src="https://kit.fontawesome.com/5e96beba0c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5e96beba0c.js" crossorigin="anonymous" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -21,44 +21,23 @@
             </fieldset>
         </div>
         <div class="linewrapper">
-            <fieldset class="project-window">
+            <fieldset id="minecraft-plugins" class="project-window">
                 <legend><h2>Minecraft plugins</h2></legend>
-                <h4>CommandWhitelist</h4>
-                <h5>
-                    <a href="https://github.com/YouHaveTrouble/CommandWhitelist"><i class="fas fa-github fa"></i> Source code</a>
-                    <span> | </span>
-                    <a href="https://www.spigotmc.org/resources/commandwhitelist.81326/"><i class="fas fa-plug fa"></i> SpigotMC page</a>
-                </h5>
-                <p>Bukkit plugin that allows server owners control over which commands players can see and execute.</p>
+                <p>This section is dynamically set by javascript, therefore you need to enable javascript to see it :<</p>
+            </fieldset>
+        </div>
 
-                <h4>PreventStabby (TogglePvP)</h4>
-                <h5>
-                    <a href="https://github.com/YouHaveTrouble/PreventStabby"><i class="fas fa-github fa"></i> Source code</a>
-                    <span> | </span>
-                    <a href="https://www.spigotmc.org/resources/togglepvp.89376/"><i class="fas fa-plug fa"></i> SpigotMC page</a>
-                </h5>
-                <p>Bukkit plugin allowing players to choose if they want to partake in PvP combat. Also protects player pets and accounts for huge amount of combat situations to effectively protect player.</p>
-                
-                <h4>Censura</h4>
-                <h5>
-                    <a href="https://github.com/YouHaveTrouble/Censura"><i class="fas fa-github fa"></i> Source code</a>
-                    <span> | </span>
-                    <a href="https://www.spigotmc.org/resources/censura.84123/"><i class="fas fa-plug fa"></i> SpigotMC page</a>
-                </h5>
-                <p>Advanced censorship bukkit plugin that lets server owners completely eliminate the usage of selected words on the server. Works with basically any user text input.</p>
-            </fieldset>
-        </div>
-        <div class="linewrapper">
-            <fieldset class="project-window">
-                <legend><h2>APIs</h2></legend>
-                <h4>Server Pinger</h4>
-                <h5>
-                    <a href="https://rapidapi.com/YouHaveTrouble/api/serverpinger/"><i class="fas fa-file-invoice fa"></i> RapidAPI page</a>
-                </h5>
-                <p>An API allowing you to ping Minecraft java or bedrock servers and source engine games.</p>
-            </fieldset>
-        </div>
         <p class="footer">© Paweł "YouHaveTrouble" Michalewski 2021</p>
         
     </div>
+    <script type="application/javascript" src="projects.js" defer></script>
 </body>
+<template id="project-entry">
+    <div class="project-entry">
+        <h4 class="project-title"></h4>
+        <h5>
+            <a class="project-source" target="_blank"><span class="fas fa-github fa"></span> Source code</a><a class="project-downloads" target="_blank"><span class="fas fa-download"></span> Download</a>
+        </h5>
+        <p class="project-description"></p>
+    </div>
+</template>

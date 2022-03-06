@@ -37,6 +37,21 @@ h5 {
     list-style-type:none;
 }
 
+.project-entry {
+    padding: 0.5rem 0;
+    opacity: 0;
+    animation: fadein 1s forwards;
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.project-entry h5 a {
+    margin: 0.3rem;
+}
+
 @media only screen 
 and (max-width: 1000px) {
     .wrapper {
