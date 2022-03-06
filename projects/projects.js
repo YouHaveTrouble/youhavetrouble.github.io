@@ -13,7 +13,6 @@ function getRepos() {
             return;
         }
         let json = JSON.parse(xhr.response);
-
         for (const repoId in json) {
             const repo = json[repoId];
             if (repo['topics'].includes('minecraft-plugin')) {
@@ -21,14 +20,6 @@ function getRepos() {
             }
         }
     };
-
-    xhr.onprogress = function (event) {
-        if (event.lengthComputable) {
-            console.log(`Received ${event.loaded} of ${event.total} bytes`);
-        } else {
-            console.log(`Received ${event.loaded} bytes`); // no Content-Length
-        }
-    }
 }
 
 function addMinecraftPlugin(pluginData) {
@@ -36,6 +27,6 @@ function addMinecraftPlugin(pluginData) {
     newEntry.querySelector('.project-title').innerText = pluginData['name'];
     newEntry.querySelector('.project-source').href = pluginData['html_url'];
     newEntry.querySelector('.project-description').innerText = pluginData['description']
-    newEntry.querySelector('.project-downloads').href = `https://github.com/YouHaveTrouble/${pluginData['name']}/releases/latest`
+    newEntry.querySelector('.project-downloads').href = `${pluginData['html_url']}/releases/latest`
     mcPluginsSection.append(newEntry);
 }
