@@ -1,32 +1,25 @@
-const projectEntry = document.getElementById('project-entry');
-const mcPluginsSection = document.getElementById('minecraft-plugins');
-mcPluginsSection.innerHTML = '<legend><h2>Minecraft plugins</h2></legend>'
-getRepos();
+const template = document.querySelector("#iconTemplate");
 
-function getRepos() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://api.github.com/users/youhavetrouble/repos?per_page=200');
-    xhr.send();
-    xhr.onload = function() {
-        if (xhr.status !== 200) {
-            mcPluginsSection.innerHTML = '<legend><h2>Minecraft plugins</h2></legend><p>An error occured while getting data from github. Please refresh the page.</p>'
-            return;
-        }
-        let json = JSON.parse(xhr.response);
-        for (const repoId in json) {
-            const repo = json[repoId];
-            if (repo['topics'].includes('minecraft-plugin')) {
-                addMinecraftPlugin(repo);
-            }
-        }
-    };
-}
+getPlugins();
 
-function addMinecraftPlugin(pluginData) {
-    let newEntry = projectEntry.content.querySelector('.project-entry').cloneNode(true);
-    newEntry.querySelector('.project-title').innerText = pluginData['name'];
-    newEntry.querySelector('.project-source').href = pluginData['html_url'];
-    newEntry.querySelector('.project-description').innerText = pluginData['description']
-    newEntry.querySelector('.project-downloads').href = `${pluginData['html_url']}/releases/latest`
-    mcPluginsSection.append(newEntry);
+async function getPlugins() {
+    const result = await fetch("https://api.modrinth.com/v2/user/youhavetrouble/projects");
+    if (result.status !== 200) return;
+    const json = await result.json();
+    const pluginSection = document.querySelector("[data-plugins]");
+
+    for (const plugin in json) {
+        const pluginData = json[plugin];
+        if (pluginData.client_side !== "unsupported") continue;
+        const clonedTemplate = template.content.cloneNode(true);
+        const projectType = pluginData.project_type;
+        const slug = pluginData.slug;
+        clonedTemplate.querySelector("[data-link]").href = `https://modrinth.com/${projectType}/${slug}`;
+        clonedTemplate.querySelector("[data-name]").innerText = pluginData.title;
+        clonedTemplate.querySelector("[data-desc]").innerText = pluginData.description;
+        const icon = clonedTemplate.querySelector("[data-iconimage]");
+        icon.src = pluginData.icon_url;
+        icon.alt = pluginData.title;
+        pluginSection.append(clonedTemplate);
+    }
 }

@@ -2,130 +2,250 @@
 :root {
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 html {
     font-family: 'Open Sans', sans-serif;
     color: white;
-    background-image: url("/img/bg.jpg");
-    background-color: rgba(0, 0, 0, 0.6);
-    background-blend-mode: color-burn;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     background-size: cover;
-    margin: 0;
-    padding: 0;
     font-size: 1.2em;
 }
 body {
     margin: 0;
-    padding: 0;
-}
-.wrapper {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
+    background-color: rgb(16, 16, 16);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-.linewrapper {
     width: 100%;
+    min-height: 100vh;
+    padding: 0;
+}
+
+nav {
+    top: 0;
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 38rem;
+    width: calc(100% - 2rem);
+    align-items: center;
+    padding-inline: 1rem;
+    height: 3rem;
+    margin: 0 auto;
+    z-index: 10;
+    background-color: rgb(16, 16, 16);
+}
+
+section {
+    width: 95%;
+    max-width: 42rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-block: 1rem;
+}
+
+.card {
+    width: 40rem;
+    background-color: #484848;
+    max-width: calc(85%);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.card .title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.card .title .avatar {
+    width: 10rem;
+    min-width: 3rem;
+    aspect-ratio: 1/1;
+    padding: 1rem;
+}
+
+.card .title .avatar img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #3f230f;
+    background-color: #6e6e6e;
+    border-radius: 50%;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.title div {
+    font-size: 1.2rem;
+    min-height: 1.5rem;
+}
+
+.title div .name {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.pages {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-}
-.window {
-    width: auto;
-    min-width: 7em;
-    max-width: 350px;
-    height: auto;
-    margin: 1em;
-    padding: 0.7em;
-    padding-top: 0.4em;
-    background: rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-legend {
-    font-size: 120%;
-    text-align: center;
+    justify-content: end;
+    height: 100%;
+    width: 100%;
 }
 
-.footer {
-    font-size: 0.7em;
-    color: rgba(128, 128, 128, 0.705);
+.pages a {
+    height: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 0.5rem;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 150ms linear;
+}
+
+.pages a:hover {
+    background-color: rgba(255,255,255, 0.1);
+}
+
+.pages a::after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
+    bottom: 0;
+    transition: background-color 150ms linear;
+}
+
+.button.active {
     cursor: default;
 }
-.window a {
-    color: rgb(190, 190, 190);
-}
-.window a:hover {
-    color: #fff;
-}
-.window p {
-    display: block;
-    margin-top: 0;
-}
-.window p:last-of-type {
-    margin-bottom: 0;
-}
-.window p b {
-    display: block;
-}
-.window img {
-    width: 1.2em;
-}
-h1 {
-    background-color: #f3ec78;
-    background-image: linear-gradient(45deg, #b0f08c, #af2048);
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent;
+
+.pages a:hover::after, .button.active::after {
+    background-color: #fff;
 }
 
-.fa-github {
-    color: #fff;
+.row {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 90%;
 }
 
-.fa-discord {
-    color: #fff;
+.vert-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #484848;
+    padding: 1rem;
+    min-width: 3rem;
+    text-align: center;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: white;
+    transition: background-color 200ms linear;
+    gap: 0.15rem;
 }
 
-.fa-keyboard {
-    color: #fff;
+a.vert-card:hover {
+    background-color: #595959;
 }
 
-.ko-fi {
-    color: #fff;
+.hori-card {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    background-color: #484848;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: white;
+    transition: background-color 200ms linear;
+    gap: 0.5rem;
+    width: 100%;
 }
 
-.ko-fi::after {
-    content: '\f004';
-    font-weight: 900;
-    font-size: 0.55em;
-    color: #ff5e5b;
+a.hori-card:hover {
+    background-color: #595959;
+}
+
+.hori-card [data-name] {
+    overflow-wrap: anywhere;
+}
+
+.hori-card .desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hori-card .icon {
+    width: 4rem;
+    min-width: 4rem;
+    min-height: 4rem;
+    height: 4rem;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #595959;
+    padding-block: 1rem;
+}
+
+.fa-brands, .fa-database, .fa-solid {
+    font-size: 2rem;
+}
+
+.svg-logos {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.svg-logos svg {
     position: absolute;
-    margin: 0.75em 0 0 -1.6em;
+    width: 2rem;
+    height: 2rem;
 }
 
-@media only screen 
-and (max-width: 1000px) {
-    .wrapper {
+.icon {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 420px) {
+    div.title {
         flex-direction: column;
-    }
-    .linewrapper {
-        flex-direction: column;
-    }
-    .window {
-        width: 85%;
-    }
-    h1 {
-        font-size: 1.7em;
     }
 }

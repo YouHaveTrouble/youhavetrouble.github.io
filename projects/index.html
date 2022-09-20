@@ -1,43 +1,63 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>YouHaveTrouble</title>
-    <link rel="stylesheet" href="/style/main.css">
-    <link rel="stylesheet" href="/style/projects.css">
-    <meta charset="UTF-8">
-    <script src="https://kit.fontawesome.com/5e96beba0c.js" crossorigin="anonymous" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouHaveTrouble</title>
+  <meta name="title" content="YouHaveTrouble"/>
+  <meta name="description" content="Just a page about random person on the internet"/>
+  <meta property="twitter:title" content="YouHaveTrouble"/>
+  <meta property="twitter:image" content="https://youhavetrouble.me/img/avatar.png"/>
+  <meta property="twitter:description" content="Just a page about random person on the internet"/>
+  <meta property="og:title" content="YouHaveTrouble"/>
+  <meta property="og:url" content="https://youhavetrouble.me"/>
+  <meta property="og:description" content="Just a page about random person on the internet"/>
+  <meta property="og:image" content="https://youhavetrouble.me/img/avatar.png"/>
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="projects.js" defer></script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="linewrapper">
-            <h1><a href="/">youhavetrouble.me</a></h1>
-        </div>
-        <div class="linewrapper">
-            <fieldset class="project-window">
-                <legend><h2>Tutorials</h2></legend>
-                <h4>Minecraft server optimization guide</h4>
-                <h5><a href="https://github.com/YouHaveTrouble/minecraft-optimization"><i class="fas fa-link fa"></i> See project</a></h5>
-                <p>A guide for bukkit minecraft server users aiming to improve performance to get more players on their server.</p>
-            </fieldset>
-        </div>
-        <div class="linewrapper">
-            <fieldset id="minecraft-plugins" class="project-window">
-                <legend><h2>Minecraft plugins</h2></legend>
-                <p>This section is dynamically set by javascript, therefore you need to enable javascript to see it :<</p>
-            </fieldset>
-        </div>
-
-        <p class="footer">© Paweł "YouHaveTrouble" Michalewski 2021</p>
-        
-    </div>
-    <script type="application/javascript" src="projects.js" defer></script>
+<nav>
+  <div class="pages">
+    <a href="/" class="button ">Home</a>
+    <a class="button active">Projects</a>
+  </div>
+</nav>
+<section>
+  <h2>Tutorials</h2>
+  <div class="row">
+    <a href="https://github.com/YouHaveTrouble/minecraft-optimization" class="hori-card" target="_blank">
+      <div class="icon">
+        <i class="fa-solid fa-server"></i>
+      </div>
+      <div class="desc">
+        <b>Server Optimization Guide</b>
+        <small>Minecraft server optimization guide aimed for bukkit-based servers</small>
+      </div>
+    </a>
+  </div>
+</section>
+<section>
+  <h2>Minecraft plugins</h2>
+  <div class="row" data-plugins>
+  </div>
+</section>
+<footer>
+  <small>&copy; Paweł "YouHaveTrouble" Michalewski</small>
+</footer>
 </body>
-<template id="project-entry">
-    <div class="project-entry">
-        <h4 class="project-title"></h4>
-        <h5>
-            <a class="project-source" target="_blank"><span class="fas fa-github fa"></span> Source code</a><a class="project-downloads" target="_blank"><span class="fas fa-download"></span> Download</a>
-        </h5>
-        <p class="project-description"></p>
+<template id="iconTemplate">
+  <a data-link class="hori-card" target="_blank">
+    <div class="icon">
+      <img data-iconimage loading="lazy">
     </div>
+    <div class="desc">
+      <b data-name></b>
+      <small data-desc></small>
+    </div>
+  </a>
 </template>
+</html>

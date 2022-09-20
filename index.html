@@ -1,33 +1,108 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <title>YouHaveTrouble</title>
+    <meta name="title" content="YouHaveTrouble"/>
+    <meta name="description" content="Just a page about random person on the internet"/>
+    <meta property="twitter:title" content="YouHaveTrouble"/>
+    <meta property="twitter:image" content="https://youhavetrouble.me/img/avatar.png"/>
+    <meta property="twitter:description" content="Just a page about random person on the internet"/>
+    <meta property="og:title" content="YouHaveTrouble"/>
+    <meta property="og:url" content="https://youhavetrouble.me"/>
+    <meta property="og:description" content="Just a page about random person on the internet"/>
+    <meta property="og:image" content="https://youhavetrouble.me/img/avatar.png"/>
     <link rel="stylesheet" href="/style/main.css">
-    <script src="https://kit.fontawesome.com/5e96beba0c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="linewrapper">
-            <h1><a href="/">youhavetrouble.me</a></h1>
-        </div>
-        <div class="linewrapper">
-            <fieldset class="window">
-                <legend>About me</legend>
-                <p>
-                    Self-taught programmer, game making enthusiast, java developer. Active member of purpur minecraft community.
-                </p>
-            </fieldset>
-            <fieldset class="window">
-            <legend>Links</legend>
-            <p>
-                <a href="https://github.com/YouHaveTrouble"><i class="fas fa-github fa"></i> GitHub</a><br>
-                <a href="https://discord.gg/j8KK5dGBps"><i class="fab fa-discord"></i> Discord</a><br>
-                <a href="https://ko-fi.com/youhavetrouble"><i class="fas fa-mug-hot ko-fi"></i> Ko-fi</a><br>
-                <a href="/projects"><i class="far fa-keyboard"></i> Projects</a>
-            </p>
-            </fieldset>
-        </div>
-        <p class="footer">© Paweł "YouHaveTrouble" Michalewski 2022</p>
+<nav>
+    <div class="pages">
+        <a class="button active">Home</a>
+        <a href="/projects" class="button">Projects</a>
     </div>
+</nav>
+<section>
+    <div class="card">
+        <div class="title">
+            <div class="avatar"><img alt="avatar" src="img/avatar.png" draggable="false"></div>
+            <div>
+                <div class="name">YouHaveTrouble</div>
+                <div id="status">Status unknown</div>
+                <div id="status-action"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="card">
+        <h2>About me</h2>
+        <p>I'm programming for a living. Writing plugins for minecraft servers for fun and doing generally questionable
+            things online.</p>
+    </div>
+</section>
+<section>
+    <h2>Socials</h2>
+    <div class="row">
+        <a href="https://github.com/YouHaveTrouble" class="vert-card">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
+        </a>
+        <a href="https://discord.gg/j8KK5dGBps" class="vert-card">
+            <i class="fa-brands fa-discord"></i>
+            <span>Discord</span>
+        </a>
+        <a href="https://ko-fi.com/youhavetrouble" class="vert-card">
+            <i class="fa-solid fa-mug-hot"></i>
+            <span>Ko-fi</span>
+        </a>
+        <a href="https://modrinth.com/user/YouHaveTrouble" class="vert-card">
+            <div class="svg-logos">
+                <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin" viewBox="0 0 142 142" aria-hidden="true" class="text-logo"><g><path d="M159.07,89.29A70.94,70.94,0,1,0,20,63.52H32A58.78,58.78,0,0,1,145.23,49.93l-11.66,3.12a46.54,46.54,0,0,0-29-26.52l-2.15,12.13a34.31,34.31,0,0,1,2.77,63.26l3.19,11.9a46.52,46.52,0,0,0,28.33-49l11.62-3.1A57.94,57.94,0,0,1,147.27,85Z" transform="translate(-19.79)" fill="white" fill-rule="evenodd"></path><path d="M108.92,139.3A70.93,70.93,0,0,1,19.79,76h12a59.48,59.48,0,0,0,1.78,9.91,58.73,58.73,0,0,0,3.63,9.91l10.68-6.41a46.58,46.58,0,0,1,44.72-65L90.43,36.54A34.38,34.38,0,0,0,57.36,79.75C57.67,80.88,58,82,58.43,83l13.66-8.19L68,63.93l12.9-13.25,16.31-3.51L101.9,53l-7.52,7.61-6.55,2.06-4.69,4.82,2.3,6.38s4.64,4.94,4.65,4.94l6.57-1.74,4.67-5.13,10.2-3.24,3,6.84L104.05,88.43,86.41,94l-7.92-8.81L64.7,93.48a34.44,34.44,0,0,0,28.72,11.59L96.61,117A46.6,46.6,0,0,1,54.13,99.83l-10.64,6.38a58.81,58.81,0,0,0,99.6-9.77l11.8,4.29A70.77,70.77,0,0,1,108.92,139.3Z" transform="translate(-19.79)" fill="white"></path></g></svg>
+            </div>
+            <span>Modrinth</span>
+        </a>
+        <a href="https://www.youtube.com/c/YouHaveTrouble" class="vert-card">
+            <i class="fa-brands fa-youtube"></i>
+            <span>YouTube</span>
+        </a>
+    </div>
+</section>
+<section>
+    <h2>Technologies</h2>
+    <div class="row">
+        <div class="vert-card">
+            <i class="fa-brands fa-java"></i>
+            <span>Java</span>
+        </div>
+        <div class="vert-card">
+            <i class="fa-brands fa-php"></i>
+            <span>PHP</span>
+        </div>
+        <div class="vert-card">
+            <i class="fa-brands fa-js"></i>
+            <span>JavaScript</span>
+        </div>
+        <div class="vert-card">
+            <i class="fa-solid fa-database"></i>
+            <span>MySQL</span>
+        </div>
+        <div class="vert-card">
+            <i class="fa-brands fa-git-alt"></i>
+            <span>GIT</span>
+        </div>
+        <div class="vert-card">
+            <i class="fa-brands fa-css3-alt"></i>
+            <span>CSS3</span>
+        </div>
+    </div>
+</section>
+<footer>
+    <small>&copy; Paweł "YouHaveTrouble" Michalewski</small>
+</footer>
 </body>
+</html>
