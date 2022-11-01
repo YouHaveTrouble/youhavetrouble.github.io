@@ -3,10 +3,12 @@ const template = document.querySelector("#iconTemplate");
 getPlugins();
 
 async function getPlugins() {
+    const pluginSection = document.querySelector("[data-plugins]");
+    pluginSection.innerHTML = "<p>Loading data...</p>";
     const result = await fetch("https://api.modrinth.com/v2/user/youhavetrouble/projects");
     if (result.status !== 200) return;
     const json = await result.json();
-    const pluginSection = document.querySelector("[data-plugins]");
+    pluginSection.innerHTML = "";
 
     for (const plugin in json) {
         const pluginData = json[plugin];
