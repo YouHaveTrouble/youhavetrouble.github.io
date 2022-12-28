@@ -12,7 +12,6 @@ async function getPlugins() {
 
     for (const plugin in json) {
         const pluginData = json[plugin];
-        if (pluginData.client_side !== "unsupported") continue;
         const clonedTemplate = template.content.cloneNode(true);
         const projectType = pluginData.project_type;
         const slug = pluginData.slug;
