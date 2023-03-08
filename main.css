@@ -55,7 +55,7 @@ header {
 }
 
 main {
-    width: 100%;
+    width: calc(100% - 2rem);
     max-width: var(--max-width);
     padding-inline: 1rem;
     display: flex;
@@ -92,10 +92,11 @@ main {
 .projects {
     text-align: center;
     width: 100%;
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .vertical-screen {
@@ -107,17 +108,34 @@ main {
     backdrop-filter: blur(4px);
     box-sizing: border-box;
     min-height: 20rem;
+    width: 12rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     text-decoration: none;
     color: #fff;
+    transition: border-color 0.1s linear;
+}
+
+.vertical-screen:hover {
+    border-color: #fff;
 }
 
 .vertical-screen p {
     font-size: 0.8rem;
     color: rgba(255,255,255, 0.75);
+}
+
+.vertical-screen .logo {
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 15rem;
 }
 
 .vertical-screen .bg {
@@ -129,9 +147,42 @@ main {
     z-index: -1;
     overflow: hidden;
     opacity: 0.075;
+    transition: opacity 0.1s linear;
+}
+
+.vertical-screen:hover .bg {
+    opacity: 0.15;
+}
+
+.vertical-screen.side-projects .bg  {
     background-image: url("img/board.jpg");
     background-position: center;
-    animation: pan-image-1 30s infinite;
+    animation: pan-image-1 60s infinite alternate both ease-in-out;
+}
+
+.vertical-screen.side-projects .logo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 15rem;
+    opacity: 0.75;
+}
+
+.vertical-screen.side-projects .logo .small {
+    font-size: 0.6rem;
+}
+
+.vertical-screen.side-projects .logo .big {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.vertical-screen.purpur .bg  {
+    background-image: url("img/minecraft-hobbit-hole.jpg");
+    background-position: center;
+    animation: pan-image-2 60s infinite alternate both ease-in-out;
 }
 
 @keyframes pan-image-1 {
@@ -149,5 +200,20 @@ main {
     }
     100% {
         background-position: 36% 42%;
+    }
+}
+
+@keyframes pan-image-2 {
+    0% {
+        background-position: 0 0;
+    }
+    33% {
+        background-position: 56% 60%;
+    }
+    66% {
+        background-position: 77% 42%;
+    }
+    100% {
+        background-position: 0 0;
     }
 }
