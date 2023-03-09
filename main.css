@@ -60,6 +60,14 @@ main {
     padding-inline: 1rem;
     display: flex;
     flex-direction: column;
+    gap: 3rem;
+}
+
+main article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -177,12 +185,57 @@ main {
 .vertical-screen.side-projects .logo .big {
     font-size: 1.3rem;
     font-weight: bold;
+    line-height: 1;
 }
 
 .vertical-screen.purpur .bg  {
     background-image: url("img/minecraft-hobbit-hole.jpg");
     background-position: center;
     animation: pan-image-2 60s infinite alternate both ease-in-out;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 0.2rem;
+    background-color: rgba(0,0,0, 0.4);
+    backdrop-filter: blur(4px);
+    box-sizing: border-box;
+    border: 2px solid #000;
+    transition: border 0.1s linear, background 0.1s linear;
+    padding: 1rem;
+    color: #fff;
+}
+
+.icon-square img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    opacity: 0.8;
+    transition: opacity 0.1s linear, transform 0.1s linear;
+    transform: scale(0.8);
+}
+
+.icon-square:hover img {
+    opacity: 1;
+    transform: scale(0.85);
+}
+
+.icon-square:hover {
+    border-color: #fff;
+    background-color: rgba(0,0,0, 0.6);
 }
 
 @keyframes pan-image-1 {
