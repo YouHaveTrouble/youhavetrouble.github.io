@@ -191,7 +191,7 @@ main article {
 .vertical-screen.purpur .bg  {
     background-image: url("img/minecraft-hobbit-hole.jpg");
     background-position: center;
-    animation: pan-image-2 60s infinite alternate both ease-in-out;
+    animation: pan-image-2 90s infinite alternate both ease-in-out;
 }
 
 .flex-row {
