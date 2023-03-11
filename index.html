@@ -11,135 +11,97 @@
     <meta property="og:url" content="https://youhavetrouble.me"/>
     <meta property="og:description" content="Just a page about random person on the internet"/>
     <meta property="og:image" content="https://youhavetrouble.me/img/avatar.png"/>
-    <link rel="stylesheet" href="/style/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="/favicon.ico"/>
     <script src="index.js" defer></script>
 </head>
 <body>
-<nav>
-    <div class="pages">
-        <a class="button active">Home</a>
-        <a href="/projects" class="button">Projects</a>
-    </div>
-</nav>
-<section>
-    <div class="card">
-        <div class="title">
-            <div class="avatar"><img alt="avatar" src="img/avatar.png" draggable="false"></div>
-            <div>
-                <div class="name">YouHaveTrouble</div>
-                <div id="status">Status unknown</div>
-                <div id="status-action"></div>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="card">
-        <h2>About me</h2>
-        <p>I'm self-taught software developer. I'm currently working as a fullstack web developer. In my free time I
-            make plugins for minecraft servers and mods for Terraria.</p>
-    </div>
-</section>
-<section>
-    <h2>Socials</h2>
-    <div class="row">
-        <a href="https://github.com/YouHaveTrouble" title="GitHub" target="_blank" class="vert-card">
-            <i class="fa-brands fa-github"></i>
-            <span>GitHub</span>
-        </a>
-        <a href="https://discord.gg/j8KK5dGBps" title="Discord" target="_blank" class="vert-card">
-            <i class="fa-brands fa-discord"></i>
-            <span>Discord</span>
-        </a>
-        <a href="https://ko-fi.com/youhavetrouble" title="Ko-fi" target="_blank" class="vert-card">
-            <i class="fa-solid fa-mug-hot"></i>
-            <span>Ko-fi</span>
-        </a>
-        <a href="https://modrinth.com/user/YouHaveTrouble" title="Modrinth" target="_blank" class="vert-card">
-            <div class="svg-logos">
-                <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin" viewBox="0 0 142 142" aria-hidden="true" class="text-logo"><g><path d="M159.07,89.29A70.94,70.94,0,1,0,20,63.52H32A58.78,58.78,0,0,1,145.23,49.93l-11.66,3.12a46.54,46.54,0,0,0-29-26.52l-2.15,12.13a34.31,34.31,0,0,1,2.77,63.26l3.19,11.9a46.52,46.52,0,0,0,28.33-49l11.62-3.1A57.94,57.94,0,0,1,147.27,85Z" transform="translate(-19.79)" fill="white" fill-rule="evenodd"></path><path d="M108.92,139.3A70.93,70.93,0,0,1,19.79,76h12a59.48,59.48,0,0,0,1.78,9.91,58.73,58.73,0,0,0,3.63,9.91l10.68-6.41a46.58,46.58,0,0,1,44.72-65L90.43,36.54A34.38,34.38,0,0,0,57.36,79.75C57.67,80.88,58,82,58.43,83l13.66-8.19L68,63.93l12.9-13.25,16.31-3.51L101.9,53l-7.52,7.61-6.55,2.06-4.69,4.82,2.3,6.38s4.64,4.94,4.65,4.94l6.57-1.74,4.67-5.13,10.2-3.24,3,6.84L104.05,88.43,86.41,94l-7.92-8.81L64.7,93.48a34.44,34.44,0,0,0,28.72,11.59L96.61,117A46.6,46.6,0,0,1,54.13,99.83l-10.64,6.38a58.81,58.81,0,0,0,99.6-9.77l11.8,4.29A70.77,70.77,0,0,1,108.92,139.3Z" transform="translate(-19.79)" fill="white"></path></g></svg>
-            </div>
-            <span>Modrinth</span>
-        </a>
-        <a href="https://wakatime.com/@YouHaveTrouble" title="WakaTime" target="_blank" class="vert-card">
-            <div class="svg-logos">
-                <svg style="fill: #fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path d="M128 0C57.308 0 0 57.308 0 128c0 70.693 57.308 128 128 128c70.693 0 128-57.307 128-128C256 57.308 198.693 0 128 0m0 33.805c51.939 0 94.195 42.256 94.195 94.195c0 51.94-42.256 94.195-94.195 94.195c-51.939 0-94.195-42.255-94.195-94.195c0-51.939 42.256-94.195 94.195-94.195m-12.5 121.838h-.113a6.342 6.342 0 0 1-4.953-2.528L81.56 114.732a6.34 6.34 0 0 1 10.131-7.62l23.993 31.893l6.863-8.478a6.34 6.34 0 0 1 4.926-2.35h.008a6.331 6.331 0 0 1 4.93 2.364l6.59 8.187l37.692-48.594a6.338 6.338 0 0 1 10.015 7.77L144.1 152.837a6.338 6.338 0 0 1-4.95 2.453h-.057a6.335 6.335 0 0 1-4.938-2.364l-6.697-8.319l-7.033 8.686a6.336 6.336 0 0 1-4.926 2.35"></path></svg>
-            </div>
-            <span>WakaTime</span>
-        </a>
-        <a href="https://www.youtube.com/@YouHaveTrouble" title="YouTube" target="_blank" class="vert-card">
-            <i class="fa-brands fa-youtube"></i>
-            <span>YouTube</span>
-        </a>
-        <a href="https://steamcommunity.com/id/YouHavetrouble" title="Steam" target="_blank" class="vert-card">
-            <i class="fa-brands fa-steam"></i>
-            <span>Steam</span>
-        </a>
-    </div>
-</section>
-<section>
-    <h2>Technologies</h2>
-    <div class="row">
-        <div class="vert-card" title="Java">
-            <i class="fa-brands fa-java"></i>
-            <span>Java</span>
-        </div>
-        <div class="vert-card" title="PHP">
-            <i class="fa-brands fa-php"></i>
-            <span>PHP</span>
-        </div>
-        <div class="vert-card" title="JavaScript">
-            <i class="fa-brands fa-js"></i>
-            <span>JavaScript</span>
-        </div>
-        <div class="vert-card" title="MySQL">
-            <i class="fa-solid fa-database"></i>
-            <span>MySQL</span>
-        </div>
-        <div class="vert-card" title="Git">
-            <i class="fa-brands fa-git-alt"></i>
-            <span>Git</span>
-        </div>
-        <div class="vert-card" title="CSS3">
-            <i class="fa-brands fa-css3-alt"></i>
-            <span>CSS3</span>
-        </div>
-        <div class="vert-card">
-            <i class="fa-brands fa-html5"></i>
-            <span>HTML 5</span>
-        </div>
-        <div class="vert-card" title="Vue">
-            <i class="fa-brands fa-vuejs"></i>
-            <span>Vue</span>
-        </div>
-        <div class="vert-card" title="NodeJS">
-            <i class="fa-brands fa-node"></i>
-            <span>NodeJS</span>
-        </div>
-        <div class="vert-card" title="C#">
-            <div class="svg-logos black-n-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="256px" height="256px" viewBox="0 0 256 256" version="1.1" preserveAspectRatio="xMidYMid">
-                    <g>
-                        <circle fill="#05930C" cx="128" cy="128" r="128"/>
-                        <path d="M38.9025888,36.0996419 L219.736207,217.266384 C196.482539,241.159369 163.974377,256 128,256 C57.307552,256 0,198.692448 0,128 C0,91.9408943 14.9106206,59.3643506 38.9025888,36.0996419 Z" fill-opacity="0.1" fill="#FFFFFF"/>
-                        <path d="M121.72,174.2 C113.012357,178.436699 103.397317,180.469593 93.72,180.12 C80.781669,180.687012 68.2281624,175.642281 59.28,166.28 C50.3887459,156.313218 45.7513402,143.262439 46.36,129.92 C45.7341533,115.461218 50.986133,101.364559 60.92,90.84 C70.6307317,80.905133 84.0759119,75.5183492 97.96,76 C106.070463,75.6904785 114.157941,77.0520068 121.72,80 L121.72,92.6 C114.385477,88.52346 106.110425,86.4409051 97.72,86.56 C87.1508846,86.2096556 76.9448113,90.437886 69.72,98.16 C62.2299693,106.698203 58.356638,117.816099 58.92,129.16 C58.3659356,139.880667 61.9776495,150.4005 69,158.52 C75.8132352,165.845413 85.4836446,169.833362 95.48,169.44 C104.697583,169.669064 113.797049,167.32841 121.76,162.68 L121.72,174.2 Z M211.04,105.84 L209.44,113.28 L191.04,113.28 L186.64,134.4 L206.4,134.4 L204.52,141.84 L185.16,141.84 L178.96,169.84 L170.12,169.84 L176.16,141.84 L158.56,141.84 L152.64,169.84 L144,169.84 L149.92,141.84 L131.36,141.84 L132.76,134.4 L151.4,134.4 L155.68,113.32 L136.2,113.32 L137.68,105.88 L157.16,105.88 L163.08,77.6 L172,77.6 L166.08,105.88 L183.8,105.88 L189.84,77.6 L198.48,77.6 L192.56,105.88 L211.04,105.84 Z M182.36,113.28 L164.6,113.28 L160,134.4 L177.84,134.4 L182.36,113.28 Z" fill="#FFFFFF"/>
-                    </g>
-                    </svg>
-            </div>
-            <span>C#</span>
-        </div>
-        <div class="vert-card" title="Linux">
-            <i class="fa-brands fa-linux"></i>
-            <span>Linux</span>
-        </div>
 
+<header>
+    <div class="avatar"><img draggable="false" src="img/avatar.png" alt="YouHaveTrouble's avatar by PikachuTurnip"></div>
+    <div class="status">
+        <p id="status">Online status unknown</p>
+        <p id="status-action"></p>
     </div>
-</section>
+    <div class="bio">
+        <p>
+            Hi! I'm Trouble, and I'm currently working as a fullstack developer. In my free time I enjoy working on my
+            side projects that mostly include programming. I'm extremely passionate about games and what goes into
+            creating them. I'm also "that one person" of every friend group that sets game servers up! Additionally,
+            I own and am slowly learning bass.
+        </p>
+    </div>
+</header>
+<main>
+    <article>
+        <h1 id="projects">Featured Projects</h1>
+        <div class="projects">
+            <a href="https://yht.one/">
+                <article class="vertical-screen side-projects">
+                    <div class="bg"></div>
+                    <div class="logo">
+                        <span class="small">YouHaveTrouble's</span>
+                        <span class="big">Side Project Den</span>
+                    </div>
+                    <div>
+                        <h2>Side Project Den</h2>
+                        <p>A list of my side projects</p>
+                    </div>
+                </article>
+            </a>
+            <a href="https://purpurmc.org/">
+                <article class="vertical-screen purpur">
+                    <div class="bg"></div>
+                    <div class="logo">
+                        <img src="img/purpur.svg" alt="" draggable="false">
+                    </div>
+                    <div>
+                        <h2>Purpur</h2>
+                        <p>Minecraft server software</p>
+                    </div>
+                </article>
+            </a>
+        </div>
+    </article>
+    <article>
+        <h1>Socials</h1>
+        <div class="flex-row">
+            <a href="https://github.com/YouHaveTrouble" class="icon-square">
+                <img src="img/icon/github.svg" alt="GitHub" loading="lazy"/>
+                <span>GitHub</span>
+            </a>
+            <a href="https://discord.gg/j8KK5dGBps" class="icon-square">
+                <img src="img/icon/discord.svg" alt="Discord" loading="lazy"/>
+                <span>Discord</span>
+            </a>
+            <a href="https://ko-fi.com/youhavetrouble" class="icon-square">
+                <img src="img/icon/kofi.svg" alt="Ko-fi" loading="lazy"/>
+                <span>Ko-fi</span>
+            </a>
+            <a href="https://steamcommunity.com/id/YouHavetrouble" class="icon-square">
+                <img src="img/icon/steam.svg" alt="Steam" loading="lazy"/>
+                <span>Steam</span>
+            </a>
+            <a href="https://www.youtube.com/@YouHaveTrouble" class="icon-square">
+                <img src="img/icon/youtube.svg" alt="YouTube" loading="lazy"/>
+                <span>YouTube</span>
+            </a>
+            <a href="https://modrinth.com/user/YouHaveTrouble" class="icon-square">
+                <img src="img/icon/modrinth.svg" alt="Modrinth" loading="lazy"/>
+                <span>Modrinth</span>
+            </a>
+            <a href="https://wakatime.com/@YouHaveTrouble" class="icon-square">
+                <img src="img/icon/wakatime.svg" alt="Wakatime" loading="lazy"/>
+                <span>Wakatime</span>
+            </a>
+        </div>
+    </article>
+
+
+</main>
+
 <footer>
     <small>&copy; Paweł "YouHaveTrouble" Michalewski</small>
 </footer>
