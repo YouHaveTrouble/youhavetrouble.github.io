@@ -29,7 +29,7 @@ body {
     width: 100%;
     min-height: 100vh;
     padding: 0;
-    background-image: url("img/bg.jpg");
+    background-image: url("img/bg.jpeg");
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -193,7 +193,7 @@ main article {
 }
 
 .vertical-screen.side-projects .bg  {
-    background-image: url("img/board.jpg");
+    background-image: url("img/board.jpeg");
     background-position: center;
     animation: pan-image-1 60s infinite alternate both ease-in-out;
 }
@@ -219,7 +219,7 @@ main article {
 }
 
 .vertical-screen.purpur .bg  {
-    background-image: url("img/minecraft-hobbit-hole.jpg");
+    background-image: url("img/minecraft-hobbit-hole.jpeg");
     background-position: center;
     animation: pan-image-2 90s infinite alternate both ease-in-out;
 }
