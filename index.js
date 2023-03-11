@@ -2,8 +2,8 @@ const status = document.querySelector("#status");
 const action = document.querySelector("#status-action");
 const avatar = document.querySelector(".avatar img");
 
-// updateStatus();
-// window.setInterval(updateStatus, 10000);
+updateStatus();
+window.setInterval(updateStatus, 10000);
 
 async function updateStatus() {
     const result = await fetch("https://api.youhavetrouble.me/online");
