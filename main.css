@@ -1,302 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root {
-    margin: 0;
-    padding: 0;
-    --max-width: 40rem;
-}
-
-::-moz-selection {
-    background: rgba(255,255,255, 0.2);
-}
-
-::selection {
-    background: rgba(255,255,255, 0.2);
+    --text-color: #cccccc;
+    --text-color-highlight: #ffffff;
 }
 
 html {
     font-family: 'Open Sans', sans-serif;
-    color: white;
-    background-size: cover;
-    font-size: 1.2em;
+    color: var(--text-color);
 }
+
 body {
-    margin: 0;
-    background-color: rgba(16, 16, 16, 0.7);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-    min-height: 100vh;
-    padding: 0;
-    background-image: url("img/bg.jpeg");
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-blend-mode: overlay;
+    justify-content: start;
+    align-items: start;
+    color: var(--text-color);
 }
 
-small {
-    font-size: 0.6rem;
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-    text-align: center;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-h2 {
-    font-size: 1.1rem;
-}
-
-header {
-    padding-block: 2rem;
-    padding-inline: 1rem;
+nav {
+    padding-block: 0.5rem;
+    background-color: #232323;
+    height: 100vh;
     display: flex;
+    position: sticky;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 1rem;
 }
 
-main {
-    width: calc(100% - 2rem);
-    max-width: var(--max-width);
-    padding-inline: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+nav a {
+    writing-mode: tb-rl;
+    transform: rotate(-180deg);
+    color: #cccccc;
+    transition: color 0.2s;
+    padding-block: 0.2rem;
+    padding-inline: 0.5rem;
 }
 
-main article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+nav a.active {
+    background-color: rgba(255,255,255, 0.1);
+    color: var(--text-color-highlight);
 }
 
-.avatar {
-    width: min(16rem, 100%);
-    height: min(16rem, 100%);
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    border: 3px solid #44251a;
-    background-color: gray;
-    overflow: clip;
-    transition: background-color 0.3s linear;
+nav a.active::after {
+    opacity: 1;
+    background-color: var(--text-color-highlight);
 }
 
-.avatar img {
-    width: 100%;
-    height: 100%;
-}
-
-.status {
-    max-width: var(--max-width);
-    width: min(100%, 16rem);
-    border: 2px solid #000;
-    border-radius: 0.2rem;
-    background-color: rgba(0,0,0, 0.5);
-    backdrop-filter: blur(4px);
-    box-sizing: border-box;
-    min-height: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.status #status-action:empty {
-    display: none;
-}
-
-.bio {
-    padding: 1rem;
-    max-width: var(--max-width);
-    width: 100%;
-    border: 2px solid #000;
-    border-radius: 0.2rem;
-    background-color: rgba(0,0,0, 0.5);
-    backdrop-filter: blur(4px);
-    box-sizing: border-box;
-}
-
-.projects {
-    text-align: center;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.vertical-screen {
-    padding: 1rem;
-    border: 2px solid #000;
-    border-radius: 0.2rem;
-    position: relative;
-    background-color: rgba(0,0,0, 0.5);
-    backdrop-filter: blur(4px);
-    box-sizing: border-box;
-    min-height: 20rem;
-    width: 12rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
-    color: #fff;
-    transition: border-color 0.1s linear;
-}
-
-.vertical-screen:hover {
-    border-color: #fff;
-}
-
-.vertical-screen p {
-    font-size: 0.8rem;
-    color: rgba(255,255,255, 0.75);
-}
-
-.vertical-screen .logo {
-    width: 100%;
-    height: 100%;
-    opacity: 0.75;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 15rem;
-}
-
-.vertical-screen .bg {
+nav a::after {
+    content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 0.1rem;
+    width: 1px;
     height: 100%;
-    z-index: -1;
-    overflow: hidden;
-    opacity: 0.075;
-    transition: opacity 0.1s linear;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
-.vertical-screen:hover .bg {
-    opacity: 0.15;
+nav a:hover {
+    color: white;
 }
 
-.vertical-screen.side-projects .bg  {
-    background-image: url("img/board.jpeg");
-    background-position: center;
-    animation: pan-image-1 60s infinite alternate both ease-in-out;
-}
-
-.vertical-screen.side-projects .logo {
+nav a:hover::after {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 15rem;
-    opacity: 0.75;
-}
-
-.vertical-screen.side-projects .logo .small {
-    font-size: 0.6rem;
-}
-
-.vertical-screen.side-projects .logo .big {
-    font-size: 1.3rem;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.vertical-screen.purpur .bg  {
-    background-image: url("img/minecraft-hobbit-hole.jpeg");
-    background-position: center;
-    animation: pan-image-2 90s infinite alternate both ease-in-out;
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.icon-square {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 6rem;
-    height: 6rem;
-    border-radius: 0.2rem;
-    background-color: rgba(0,0,0, 0.4);
-    backdrop-filter: blur(4px);
-    box-sizing: border-box;
-    border: 2px solid #000;
-    transition: border 0.1s linear, background 0.1s linear;
-    padding: 1rem;
-    color: #fff;
-}
-
-.icon-square img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    opacity: 0.8;
-    transition: opacity 0.1s linear, transform 0.1s linear;
-    transform: scale(0.8);
-}
-
-.icon-square:hover img {
+    color: #cccccc;
     opacity: 1;
-    transform: scale(0.85);
-}
-
-.icon-square:hover {
-    border-color: #fff;
-    background-color: rgba(0,0,0, 0.6);
-}
-
-@keyframes pan-image-1 {
-    0% {
-        background-position: 36% 42%;
-    }
-    25% {
-        background-position: 60% 84%;
-    }
-    50% {
-        background-position: 45% 60%;
-    }
-    75% {
-        background-position: 12% 20%;
-    }
-    100% {
-        background-position: 36% 42%;
-    }
-}
-
-@keyframes pan-image-2 {
-    0% {
-        background-position: 0 0;
-    }
-    33% {
-        background-position: 56% 60%;
-    }
-    66% {
-        background-position: 77% 42%;
-    }
-    100% {
-        background-position: 0 0;
-    }
 }
