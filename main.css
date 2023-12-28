@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 :root {
     --text-color: #cccccc;
     --text-color-highlight: #ffffff;
@@ -28,7 +24,6 @@ body {
     background-color: rgba(0, 0, 0, 0.65);
     background-attachment: fixed;
     background-position: center;
-    overflow-y: auto;
 }
 
 .text-center {
@@ -93,8 +88,6 @@ main {
     padding: 0;
     margin-left: 2rem;
     width: 100%;
-    overscroll-behavior-y: contain;
-    scroll-snap-type: y proximity;
 }
 
 section {
@@ -102,9 +95,6 @@ section {
     margin: 0;
     width: 100%;
     height: 100vh;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scroll-snap-align: start;
 }
 
 article {
@@ -205,7 +195,7 @@ article {
     color: var(--text-color-highlight);
 }
 
-#projects h2 {
+section h2 {
     font-size: 1.5rem;
     color: var(--text-color-highlight);
     padding-bottom: 1.5rem;
@@ -214,8 +204,6 @@ article {
 #projects .project-scroller {
     height: 100%;
     max-width: 100vw;
-    scroll-snap-type: y mandatory;
-    scroll-snap-align: start;
 }
 
 #projects .project-scroller article {
@@ -275,4 +263,61 @@ article {
     width: 100%;
     height: 100%;
     border-radius: 0.5rem;
+}
+
+#socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, 0.85);
+    background-image: url("img/bg-social.jpg");
+    background-blend-mode: darken;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#socials article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 26rem;
+}
+
+#socials .social-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: all 0.2s;
+    border-radius: 0.25rem;
+    border: 1px solid var(--text-color);
+    width: 5rem;
+    height: 5rem;
+    padding: 0.5rem;
+    gap: 0.2rem;
+}
+
+#socials .social-link:hover {
+    color: var(--text-color-highlight);
+    border-color: var(--text-color-highlight);
+    background-color: rgba(255,255,255, 0.15);
+}
+
+#socials .social-link img {
+    width: 75%;
+    height: 75%;
+    filter: brightness(0.85);
+    transition: filter 0.2s, scale 0.2s
+}
+
+#socials .social-link:hover img {
+    filter: brightness(1);
+    scale: 1.05;
 }
