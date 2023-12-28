@@ -13,97 +13,255 @@
     <meta property="og:image" content="https://youhavetrouble.me/img/avatar.png"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="/favicon.ico"/>
     <script src="index.js" defer></script>
 </head>
 <body>
-
-<header>
-    <div class="avatar"><img draggable="false" src="img/avatar.png" alt="YouHaveTrouble's avatar by PikachuTurnip"></div>
-    <div class="status">
-        <p id="status">Online status unknown</p>
-        <p id="status-action"></p>
-    </div>
-    <div class="bio">
-        <p>
-            Hi! I'm Trouble, and I'm currently working as a fullstack developer. In my free time I enjoy working on my
-            side projects that mostly include programming. I'm extremely passionate about games and what goes into
-            creating them. I'm also "that one person" of every friend group that sets game servers up! Additionally,
-            I own and am slowly learning bass.
-        </p>
-    </div>
-</header>
+<nav>
+    <a data-link="about" tabindex="1" href="#about">About me</a>
+    <a data-link="projects" tabindex="2" href="#projects">Projects</a>
+    <a data-link="socials" tabindex="3" href="#socials">Socials</a>
+</nav>
 <main>
-    <article>
-        <h1 id="projects">Featured Projects</h1>
-        <div class="projects">
-            <a href="https://yht.one/">
-                <article class="vertical-screen side-projects">
-                    <div class="bg"></div>
-                    <div class="logo">
-                        <span class="small">YouHaveTrouble's</span>
-                        <span class="big">Side Project Den</span>
+    <section id="about">
+        <article>
+            <div>
+                <h1>YouHaveTrouble</h1>
+                <small style="display: block" class="text-center">Just a random person on the internet</small>
+            </div>
+            <div data-info class="tags">
+                <span>Creative</span>
+                <span>Frontend</span>
+                <span>Backend</span>
+                <span>Developer</span>
+                <span>Web</span>
+                <span>Modder</span>
+                <span>Gamer</span>
+            </div>
+        </article>
+    </section>
+    <hr>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-scroller">
+            <article>
+                <div class="project-logo">
+                    <img src="/img/purpur.svg" alt="Purpur logo" draggable="false"  loading="lazy">
+                </div>
+                <div class="description">
+                    <h3 class="title">Purpur</h3>
+                    <p>
+                        Minecraft server software based on Paper. Focuses on introducing new configuration options to
+                        already existing features along with adding completely new features.
+                    </p>
+                    <div class="links">
+                        <a href="https://purpurmc.org" target="_blank" rel="external" title="Project's website">
+                            <button>
+                                <img src="img/icon/website.svg" alt="website" draggable="false">
+                            </button>
+                        </a>
+                        <a href="https://github.com/PurpurMC/Purpur" target="_blank" rel="external" title="Project's GitHub">
+                            <button>
+                                <img src="img/icon/github.svg" alt="github" draggable="false">
+                            </button>
+                        </a>
                     </div>
-                    <div>
-                        <h2>Side Project Den</h2>
-                        <p>A list of my side projects</p>
+                </div>
+            </article>
+            <article>
+                <div class="project-logo">
+                    <img src="/img/purpur.svg" alt="Purpur logo" draggable="false" loading="lazy">
+                </div>
+                <div class="description">
+                    <h3 class="title">PurpurExtras</h3>
+                    <p>
+                        Minecraft plugin for Paper and Purpur servers. Adds features that were suggested to be added in
+                        Purpur, but were deemed to be easier to maintain in a plugin.
+                    </p>
+                    <div class="links">
+                        <a href="https://modrinth.com/plugin/purpurextras" target="_blank" rel="external" title="Project's website">
+                            <button>
+                                <img src="img/icon/website.svg" alt="website" draggable="false">
+                            </button>
+                        </a>
+                        <a href="https://github.com/PurpurMC/PurpurExtras" target="_blank" rel="external" title="Project's GitHub">
+                            <button>
+                                <img src="img/icon/github.svg" alt="github" draggable="false">
+                            </button>
+                        </a>
                     </div>
-                </article>
-            </a>
-            <a href="https://purpurmc.org/">
-                <article class="vertical-screen purpur">
-                    <div class="bg"></div>
-                    <div class="logo">
-                        <img src="img/purpur.svg" alt="" draggable="false">
+                </div>
+            </article>
+            <article>
+                <div class="project-logo">
+                    <img src="/img/cw.jpeg" alt="CommandWhitelist logo" draggable="false" loading="lazy">
+                </div>
+                <div class="description">
+                    <h3 class="title">CommandWhitelist</h3>
+                    <p>
+                        Minecraft plugin for bukkit-based servers and major minecraft proxies. Allows server owners to
+                        decide which commands can be tab-completed and executed by players.
+                    </p>
+                    <div class="links">
+                        <a href="https://modrinth.com/plugin/commandwhitelist" target="_blank" rel="external" title="Project's website">
+                            <button>
+                                <img src="img/icon/website.svg" alt="website" draggable="false">
+                            </button>
+                        </a>
+                        <a href="https://github.com/YouHaveTrouble/CommandWhitelist" target="_blank" rel="external" title="Project's GitHub">
+                            <button>
+                                <img src="img/icon/github.svg" alt="github" draggable="false">
+                            </button>
+                        </a>
                     </div>
-                    <div>
-                        <h2>Purpur</h2>
-                        <p>Minecraft server software</p>
+                </div>
+            </article>
+            <article>
+                <div class="project-logo">
+                    <img src="/img/ps.jpeg" alt="PreventStabby logo" draggable="false" loading="lazy">
+                </div>
+                <div class="description">
+                    <h3 class="title">PreventStabby</h3>
+                    <p>
+                        Minecraft plugin for bukkit-based servers that controls players personal PvP state, tracks all
+                        sources of damage for its checks and has basic combat timer tracker.
+                    </p>
+                    <div class="links">
+                        <a href="https://modrinth.com/plugin/preventstabby" target="_blank" rel="external" title="Project's website">
+                            <button>
+                                <img src="img/icon/website.svg" alt="website" draggable="false">
+                            </button>
+                        </a>
+                        <a href="https://github.com/YouHaveTrouble/PreventStabby" target="_blank" rel="external" title="Project's GitHub">
+                            <button>
+                                <img src="img/icon/github.svg" alt="github" draggable="false">
+                            </button>
+                        </a>
                     </div>
-                </article>
-            </a>
+                </div>
+            </article>
+            <article>
+                <div class="project-logo">
+                    <img src="/img/ce.jpg" alt="Censura logo" draggable="false" loading="lazy">
+                </div>
+                <div class="description">
+                    <h3 class="title">Censura</h3>
+                    <p>
+                        Minecraft plugin for bukkit-based servers that cancels messages, item renames, writing in books
+                        or signs if they contain blacklisted words or regex expressions.
+                    </p>
+                    <div class="links">
+                        <a href="https://modrinth.com/plugin/censura" target="_blank" rel="external" title="Project's website">
+                            <button>
+                                <img src="img/icon/website.svg" alt="website" draggable="false">
+                            </button>
+                        </a>
+                        <a href="https://github.com/YouHaveTrouble/Censura" target="_blank" rel="external" title="Project's GitHub">
+                            <button>
+                                <img src="img/icon/github.svg" alt="github" draggable="false">
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <div class="project-logo">
+                    <img src="/img/gm.png" alt="Guild Master logo" draggable="false" loading="lazy">
+                </div>
+                <div class="description">
+                    <h3 class="title">Guild Master</h3>
+                    <p>
+                        Guild Master is a web browser game about managing a guild of adventurers. It is currently in
+                        early development, but is already playable.
+                    </p>
+                    <div class="links">
+                        <a href="https://guildmaster.yht.one" target="_blank" rel="external" title="Project's website">
+                            <button>
+                                <img src="img/icon/website.svg" alt="website" draggable="false">
+                            </button>
+                        </a>
+                        <a href="https://github.com/YouHaveTrouble/GuildMaster" target="_blank" rel="external" title="Project's GitHub">
+                            <button>
+                                <img src="img/icon/github.svg" alt="github" draggable="false">
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <div class="project-logo">
+                    <img src="/img/meapi.png" alt="Me API logo" draggable="false" loading="lazy">
+                </div>
+                <div class="description">
+                    <h3 class="title">Me API</h3>
+                    <p>
+                        API that allows you to query your current activity, status and game profiles.
+                    </p>
+                    <div class="links">
+                        <a href="https://api.youhavetrouble.me" target="_blank" rel="external" title="Project's website">
+                            <button>
+                                <img src="img/icon/website.svg" alt="website" draggable="false">
+                            </button>
+                        </a>
+                        <a href="https://github.com/YouHaveTrouble/MeAPI" target="_blank" rel="external" title="Project's GitHub">
+                            <button>
+                                <img src="img/icon/github.svg" alt="github" draggable="false">
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </article>
         </div>
-    </article>
-    <article>
-        <h1>Socials</h1>
-        <div class="flex-row">
-            <a href="https://github.com/YouHaveTrouble" class="icon-square">
-                <img src="img/icon/github.svg" alt="GitHub" loading="lazy"/>
+    </section>
+    <hr>
+    <section id="socials">
+        <h2>Socials</h2>
+        <article>
+            <a href="https://github.com/YouHaveTrouble" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/github.svg" alt="GitHub" draggable="false" loading="lazy">
                 <span>GitHub</span>
             </a>
-            <a href="https://discord.gg/j8KK5dGBps" class="icon-square">
-                <img src="img/icon/discord.svg" alt="Discord" loading="lazy"/>
+            <a href="https://discord.youhavetrouble.me" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/discord.svg" alt="Discord" draggable="false" loading="lazy">
                 <span>Discord</span>
             </a>
-            <a href="https://ko-fi.com/youhavetrouble" class="icon-square">
-                <img src="img/icon/kofi.svg" alt="Ko-fi" loading="lazy"/>
+            <a href="https://ko-fi.com/youhavetrouble" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/kofi.svg" alt="Ko-fi" draggable="false" loading="lazy">
                 <span>Ko-fi</span>
             </a>
-            <a href="https://steamcommunity.com/id/YouHavetrouble" class="icon-square">
-                <img src="img/icon/steam.svg" alt="Steam" loading="lazy"/>
+            <a href="https://steamcommunity.com/id/YouHavetrouble" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/steam.svg" alt="Steam" draggable="false" loading="lazy">
                 <span>Steam</span>
             </a>
-            <a href="https://www.youtube.com/@YouHaveTrouble" class="icon-square">
-                <img src="img/icon/youtube.svg" alt="YouTube" loading="lazy"/>
+            <a href="https://www.youtube.com/@YouHaveTrouble" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/youtube.svg" alt="YouTube" draggable="false" loading="lazy">
                 <span>YouTube</span>
             </a>
-            <a href="https://modrinth.com/user/YouHaveTrouble" class="icon-square">
-                <img src="img/icon/modrinth.svg" alt="Modrinth" loading="lazy"/>
+            <a href="https://modrinth.com/user/YouHaveTrouble" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/modrinth.svg" alt="Modrinth" draggable="false" loading="lazy">
                 <span>Modrinth</span>
             </a>
-            <a href="https://wakatime.com/@YouHaveTrouble" class="icon-square">
-                <img src="img/icon/wakatime.svg" alt="Wakatime" loading="lazy"/>
-                <span>Wakatime</span>
+            <a href="https://modrinth.com/user/YouHaveTrouble" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/wakatime.svg" alt="WakaTime" draggable="false" loading="lazy">
+                <span>WakaTime</span>
             </a>
-        </div>
-    </article>
-
-
+            <a href="https://open.spotify.com/user/11144490753" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/spotify.svg" alt="Spotify" draggable="false" loading="lazy">
+                <span>Spotify</span>
+            </a>
+            <a href="https://www.linkedin.com/in/pawel-youhavetrouble-michalewski/" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/linkedin.svg" alt="LinkedIn" draggable="false" loading="lazy">
+                <span>LinkedIn</span>
+            </a>
+            <a href="mailto://contact@youhavetrouble.me" class="social-link" target="_blank" rel="external">
+                <img src="img/icon/email.svg" alt="Email" draggable="false" loading="lazy">
+                <span>Email</span>
+            </a>
+        </article>
+    </section>
 </main>
 
-<footer>
-    <small>&copy; Paweł "YouHaveTrouble" Michalewski</small>
-</footer>
 </body>
 </html>

@@ -1,45 +1,68 @@
-const status = document.querySelector("#status");
-const action = document.querySelector("#status-action");
-const avatar = document.querySelector(".avatar");
+const sections = document.querySelectorAll('main section');
+const navLinks = document.querySelectorAll('[data-link]');
 
-updateStatus();
-window.setInterval(updateStatus, 10000);
+const observer = new IntersectionObserver((entries) => {
+    if (window.innerWidth <= 767) return;
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            setActiveLink(sectionId);
+        }
+    });
+}, {
+    root: null,
+    rootMargin: '-20% 0px -20% 0px',
+    threshold: 0.3
+});
 
-async function updateStatus() {
-    const result = await fetch("https://api.youhavetrouble.me/online");
+const mobileObserver = new IntersectionObserver((entries) => {
+    if (window.innerWidth > 767) return;
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            setActiveLink(sectionId);
+        }
+    });
+}, {
+    root: null,
+    rootMargin: '-30% 0px -30% 0px',
+    threshold: 0.1
+});
 
-    if (result.status !== 200) return;
+sections.forEach(section => {
+    observer.observe(section);
+    mobileObserver.observe(section);
+});
 
-    const json = await result.json();
-    switch (json.steam.status) {
-        case "ONLINE":
-            status.innerText = "Currently Online";
-            action.innerText = "";
-            setavatarBg("online")
-            return;
-        case "IN_GAME":
-            status.innerText = "Currently Online";
-            action.innerText = `Playing ${json.steam.game}`;
-            setavatarBg("online")
-            return;
-    }
-
-    if (json.discord === "DO_NOT_DISTURB" || json.discord === "ONLINE") {
-        status.innerText = "Currently Online";
-        action.innerText = "";
-        setavatarBg("online")
-        return;
-    }
-
-    status.innerText = "Currently Offline";
-    action.innerText = "";
-    setavatarBg("offline")
+function setActiveLink(sectionId) {
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-link') === sectionId) {
+            link.classList.add('active');
+        }
+    });
 }
 
-function setavatarBg(status) {
-    if (status === "online") {
-        avatar.style.backgroundColor = "#5a9a5a"
-    } else if (status === "offline") {
-        avatar.style.backgroundColor = "#a62d2d"
+
+/** Shuffle data-info elements */
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
+const dataInfo = document.querySelector("[data-info]");
+const dataInfoElements = [];
+for (const element of dataInfo.children) {
+    dataInfoElements.push(element);
+}
+shuffleArray(dataInfoElements);
+dataInfo.innerHTML = "";
+for (const element of dataInfoElements) {
+    dataInfo.appendChild(element);
+}
+
+
+
+
