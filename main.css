@@ -2,7 +2,6 @@
     --text-color: #cccccc;
     --text-color-highlight: #ffffff;
     scroll-behavior: smooth;
-    overscroll-behavior-y: contain;
 }
 
 html {
@@ -24,6 +23,13 @@ body {
     background-color: rgba(0, 0, 0, 0.65);
     background-attachment: fixed;
     background-position: center;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid var(--text-color);
+    width: 100%;
+    margin: 0;
 }
 
 .text-center {
@@ -121,10 +127,6 @@ article {
     background-position: center;
     background-attachment: fixed;
     height: auto;
-}
-
-#projects.active {
-
 }
 
 #projects .links {
