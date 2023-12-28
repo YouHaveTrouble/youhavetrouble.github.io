@@ -1,25 +1,37 @@
 const sections = document.querySelectorAll('main section');
 const navLinks = document.querySelectorAll('[data-link]');
 
-const options = {
+const observer = new IntersectionObserver((entries) => {
+    if (window.innerWidth <= 767) return;
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            setActiveLink(sectionId);
+        }
+    });
+}, {
     root: null,
     rootMargin: '-20% 0px -20% 0px',
-    threshold: 0.2
-};
+    threshold: 0.3
+});
 
-const observer = new IntersectionObserver((entries, observer) => {
+const mobileObserver = new IntersectionObserver((entries) => {
+    if (window.innerWidth > 767) return;
     entries.forEach(entry => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                setActiveLink(sectionId);
-            }
-        });
+        if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            setActiveLink(sectionId);
+        }
     });
-}, options);
+}, {
+    root: null,
+    rootMargin: '-30% 0px -30% 0px',
+    threshold: 0.1
+});
 
 sections.forEach(section => {
     observer.observe(section);
+    mobileObserver.observe(section);
 });
 
 function setActiveLink(sectionId) {
