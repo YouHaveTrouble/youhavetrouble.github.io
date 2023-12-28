@@ -1,41 +1,36 @@
-const navLinks = {
-    hero: document.querySelector('a[href="#hero"]'),
-    projects: document.querySelector('a[href="#projects"]'),
-}
+const sections = document.querySelectorAll('main section');
+const navLinks = document.querySelectorAll('[data-link]');
 
-const sections = {
-    hero: document.querySelector('#hero'),
-    projects: document.querySelector('#projects'),
-}
+const options = {
+    root: null,
+    rootMargin: '-20% 0px -20% 0px',
+    threshold: 0.2
+};
 
-changeSection(window.location.hash ? window.location.hash : '#hero')
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                setActiveLink(sectionId);
+            }
+        });
+    });
+}, options);
 
-for (const link of Object.values(navLinks)) {
-    link.addEventListener('click', (e) => {
-            const target = e.target.getAttribute('href');
-            if (!target.startsWith('#')) return;
-            changeSection(target)
+sections.forEach(section => {
+    observer.observe(section);
+});
+
+function setActiveLink(sectionId) {
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-link') === sectionId) {
+            link.classList.add('active');
         }
-    )
+    });
 }
 
-function changeSection(sectionName) {
-    for (const link of Object.values(navLinks)) {
-        link.classList.remove('active');
-    }
-    for (const link of Object.values(sections)) {
-        link.classList.remove('active');
-    }
-
-    if (!sectionName.startsWith('#')) {
-        sectionName = '#' + sectionName;
-    }
-
-    const targetElement = document.querySelector(sectionName);
-    if (!targetElement) return;
-    targetElement.classList.add('active');
-    navLinks[targetElement.id].classList.add('active');
-}
 
 /** Shuffle data-info elements */
 function shuffleArray(array) {

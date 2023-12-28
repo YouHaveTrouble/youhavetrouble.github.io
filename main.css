@@ -6,6 +6,7 @@
     --text-color: #cccccc;
     --text-color-highlight: #ffffff;
     scroll-behavior: smooth;
+    overscroll-behavior-y: contain;
 }
 
 html {
@@ -27,7 +28,7 @@ body {
     background-color: rgba(0, 0, 0, 0.65);
     background-attachment: fixed;
     background-position: center;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .text-center {
@@ -92,8 +93,8 @@ main {
     padding: 0;
     margin-left: 2rem;
     width: 100%;
-    scroll-snap-type: block;
-    scroll-snap-align: start;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y proximity;
 }
 
 section {
@@ -102,13 +103,15 @@ section {
     width: 100%;
     height: 100vh;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-snap-align: start;
 }
 
 article {
     width: 100%;
 }
 
-#hero {
+#about {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,20 +123,18 @@ article {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    background-color: rgba(0,0,0, 0.9);
+    background-color: rgba(0,0,0, 0.85);
     background-blend-mode: darken;
     padding-top: 2rem;
     padding-bottom: 2rem;
     background-image: url("/img/bg-projects.jpg");
-    transition: background-color 4s;
     background-position: center;
     background-attachment: fixed;
-    overflow-y: auto;
-    overflow-y: overlay;
+    height: auto;
 }
 
 #projects.active {
-    background-color: rgba(0,0,0, 0.85);
+
 }
 
 #projects .links {
@@ -153,6 +154,11 @@ article {
     padding: 0.2rem;
     background: transparent;
     cursor: pointer;
+}
+
+#projects .links a button:hover {
+    background-color: rgba(255,255,255, 0.15);
+    transition: background-color 0.2s;
 }
 
 #projects .links a button img {
@@ -187,7 +193,7 @@ article {
     border-color: var(--text-color-highlight);
 }
 
-#hero article {
+#about article {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -195,7 +201,7 @@ article {
     gap: 1.5rem;
 }
 
-#hero h1 {
+#about h1 {
     color: var(--text-color-highlight);
 }
 
@@ -208,6 +214,8 @@ article {
 #projects .project-scroller {
     height: 100%;
     max-width: 100vw;
+    scroll-snap-type: y mandatory;
+    scroll-snap-align: start;
 }
 
 #projects .project-scroller article {
