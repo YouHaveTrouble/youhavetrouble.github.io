@@ -16,7 +16,6 @@ body {
     justify-content: start;
     align-items: start;
     color: var(--text-color);
-    background-image: url("/img/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: darken;
@@ -101,10 +100,30 @@ section {
     margin: 0;
     width: 100%;
     height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: rgba(0,0,0, 0.55);
+    background-blend-mode: darken;
 }
 
 article {
     width: 100%;
+}
+
+.bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 #about {
@@ -112,6 +131,13 @@ article {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("/img/bg.jpg");
+    background-color: rgba(0,0,0, 0.55);
+    background-blend-mode: darken;
+}
+
+#about .bg {
+    background-image: url("/img/lowres/bg-lowres.jpg");
 }
 
 #projects {
@@ -123,10 +149,14 @@ article {
     background-blend-mode: darken;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    background-image: url("/img/bg-projects.jpg");
     background-position: center;
     background-attachment: fixed;
     height: auto;
+    background-image: url("/img/bg-projects.jpg");
+}
+
+#projects .bg {
+    background-image: url("/img/lowres/bg-projects-lowres.jpg");
 }
 
 #projects .links {
@@ -279,6 +309,10 @@ section h2 {
     padding-bottom: 2rem;
     background-position: center;
     background-attachment: fixed;
+}
+
+#socials .bg {
+    background-image: url("/img/lowres/bg-social-lowres.jpg");
 }
 
 #socials article {
