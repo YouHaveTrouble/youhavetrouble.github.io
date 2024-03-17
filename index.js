@@ -11,7 +11,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, {
     root: null,
-    rootMargin: '-20% 0px -20% 0px',
+    rootMargin: '-10% 0px -10% 0px',
     threshold: 0.3
 });
 
@@ -25,7 +25,7 @@ const mobileObserver = new IntersectionObserver((entries) => {
     });
 }, {
     root: null,
-    rootMargin: '-30% 0px -30% 0px',
+    rootMargin: '-20% 0px -20% 0px',
     threshold: 0.1
 });
 
