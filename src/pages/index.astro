@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Home';
+const description = 'My little corner of the internet.';
+const permalink = Astro.site.href;
+---
+
+<BaseLayout title={title} description={description} permalink={permalink}>
+  <div class="home-container">
+    <div class="home-copy">
+      <h1>Welcome to my little corner of the interwebs</h1>
+      <p>Feel free to check out what I got in store!</p>
+    </div>
+
+    <div class="hero-socials-grid">
+        <a href="https://github.com/YouHaveTrouble" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/github.svg" alt="GitHub" draggable="false" loading="lazy">
+          <span>GitHub</span>
+        </a>
+        <a href="https://discord.youhavetrouble.me" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/discord.svg" alt="Discord" draggable="false" loading="lazy">
+          <span>Discord</span>
+        </a>
+        <a href="https://ko-fi.com/youhavetrouble" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/kofi.svg" alt="Ko-fi" draggable="false" loading="lazy">
+          <span>Ko-fi</span>
+        </a>
+        <a href="https://steamcommunity.com/id/YouHavetrouble" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/steam.svg" alt="Steam" draggable="false" loading="lazy">
+          <span>Steam</span>
+        </a>
+        <a href="https://www.youtube.com/@YouHaveTrouble" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/youtube.svg" alt="YouTube" draggable="false" loading="lazy">
+          <span>YouTube</span>
+        </a>
+        <a href="https://modrinth.com/user/YouHaveTrouble" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/modrinth.svg" alt="Modrinth" draggable="false" loading="lazy">
+          <span>Modrinth</span>
+        </a>
+        <a href="https://wakatime.com/@YouHaveTrouble" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/wakatime.svg" alt="WakaTime" draggable="false" loading="lazy">
+          <span>WakaTime</span>
+        </a>
+        <a href="https://open.spotify.com/user/11144490753" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/spotify.svg" alt="Spotify" draggable="false" loading="lazy">
+          <span>Spotify</span>
+        </a>
+        <a href="https://www.linkedin.com/in/pawel-youhavetrouble-michalewski/" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/linkedin.svg" alt="LinkedIn" draggable="false" loading="lazy">
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto://contact@youhavetrouble.me" class="social-link" target="_blank" rel="external">
+          <img src="assets/icons/email.svg" alt="Email" draggable="false" loading="lazy">
+          <span>Email</span>
+        </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .home-container {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin: 2em 0;
+    min-height: 400px;
+  }
+
+  .home-copy {
+    flex: 1;
+    padding: 0 1em;
+  }
+
+  .home-copy h1 {
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    line-height: 1.3;
+  }
+
+  .home-copy p {
+    font-size: 1.4em;
+  }
+
+  .hero-socials-grid {
+    margin: 0 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: min(100%, 450px);
+    gap: 0.75rem;
+  }
+
+  .hero-socials-grid a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 5.5rem;
+    height: 5.5rem;
+    text-decoration: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    border-radius: 0.25rem;
+  }
+
+  .hero-socials-grid a:hover {
+    color: var(--text-main);
+    border-color: var(--text-main);
+  }
+
+  html:not(.theme-dark) .hero-socials-grid a img {
+    filter: invert(0.8);
+  }
+
+  .hero-socials-grid a img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @media (max-width: 1200px) {
+    p {
+      font-size: 1.2em;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .home-container {
+      flex-direction: column;
+    }
+
+    .home-copy {
+      flex: 0;
+      padding-bottom: 2em;
+      text-align: center;
+    }
+  }
+</style>

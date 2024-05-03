@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About';
+const description = 'About your blog.';
+const permalink = `${Astro.site.href}about`;
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="about">
+  <div class="container">
+    <h1>About me</h1>
+
+    <p>My name is <strong>Paweł</strong>, but I'm better known as <strong>YouHaveTrouble</strong> on the internet.</p>
+    <p>
+      I currently work as a full-stack web developer. Technologies I usually use for my job are javascript, vuejs,
+      typescript, sql. I also often actively research and learn about new technologies that could be used to improve my
+      work.
+    </p>
+    <p>
+      In my spare time I develop plugins for minecraft servers. This is a hobby that initially made me learn how to
+      code. To this day I help maintain <a href="https://purpurmc.org">Purpur</a> server software along with its
+      <a href="https://modrinth.com/plugin/purpurextras">official plugin</a>. List of plugins I currently support can be
+      found <a href="https://modrinth.com/user/YouHaveTrouble/plugins">here</a>.
+    </p>
+    <p>
+      My video game interests are mostly focused on narrative heavy games, but I also enjoy some ARPGs and roguelikes.
+      You can see my full steam library <a href="https://steamcommunity.com/id/YouHaveTrouble/games/?tab=all">here</a>.
+      Recommendations from my favourite games would include:
+    </p>
+    <ul>
+      <li><a href="https://store.steampowered.com/app/420530/OneShot/">OneShot</a></li>
+      <li><a href="https://store.steampowered.com/app/1150690/OMORI/">OMORI</a></li>
+      <li><a href="https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/">The Binding of Isaac: Rebirth</a></li>
+      <li><a href="https://store.steampowered.com/app/105600/Terraria/">Terraria</a></li>
+      <li><a href="https://store.steampowered.com/app/582010/Monster_Hunter_World/">Monster Hunter: World</a></li>
+      <li><a href="https://store.steampowered.com/app/238960/Path_of_Exile/">Path of Exile</a></li>
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-block: 0;
+}
+
+ul li {
+  margin-block: 0;
+}
+</style>
