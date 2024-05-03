@@ -4,7 +4,12 @@ import Bio from '../../components/Bio.astro';
 import getPostData from '../../utils/getPostData';
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../data/blog-posts/*.md');
+  let posts = [];
+  try {
+    posts = await Astro.glob('../../data/blog-posts/*.md');
+  } catch (error) {
+    console.error("No blog posts found");
+  }
   return posts.map(p => ({
     params: { slug: p.file.split('/').pop().split('.').shift() },
     props: { post: p },
