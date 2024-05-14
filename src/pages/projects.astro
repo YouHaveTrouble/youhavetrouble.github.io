@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Projects';
+const description = 'Stuff I\'m working on.';
+const permalink = `${Astro.site.href}projects`;
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="projects">
+  <div class="container">
+    <h1>Projects</h1>
+    <p>
+      Here are some of the projects I'm working on. Most of them are open source, so feel free to check them out!
+      <br>
+      Projects presented here are what I consider in presentable and/or finished state. They might or might not get updates.
+      <br>
+      Most logos generated using <a href="https://huggingface.co/spaces/dalle-mini/dalle-mini">DALL-E mini</a>.
+    </p>
+    <h2 id="minecraft"><a href="#minecraft">Minecraft</a></h2>
+    <hr>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/purpur.svg" alt="Purpur logo"/>
+      </div>
+      <div class="description">
+        <h3>Purpur</h3>
+        <p>
+          Purpur is a drop-in replacement for Paper servers designed for configurability and new, fun, exciting gameplay features.
+        </p>
+        <p>
+          <a href="https://purpurmc.org" target="_blank">Website</a> | <a href="https://github.com/PurpurMC/Purpur"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/purpur.svg" alt="PurpurExtras logo"/>
+      </div>
+      <div class="description">
+        <h3>PurpurExtras</h3>
+        <p>
+          A companion plugin for Purpur server software that adds additional features and improvements.
+        </p>
+        <p>
+          <a href="https://modrinth.com/plugin/purpurextras" target="_blank">Website</a> | <a href="https://github.com/PurpurMC/PurpurExtras"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/cw.png" alt="CommandWhitelist logo"/>
+      </div>
+      <div class="description">
+        <h3>CommandWhitelist</h3>
+        <p>
+          Minecraft bukkit plugin that allows to control precisely what commands players can see and use.
+        </p>
+        <p>
+          <a href="https://modrinth.com/plugin/commandwhitelist" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/CommandWhitelist"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/ps.webp" alt="PreventStabby logo"/>
+      </div>
+      <div class="description">
+        <h3>PreventStabby</h3>
+        <p>
+          Minecraft bukkit plugin that gives more control over PvP capabilities.
+        </p>
+        <p>
+          <a href="https://modrinth.com/plugin/preventstabby" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/PreventStabby"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/censura.webp" alt="Censura logo"/>
+      </div>
+      <div class="description">
+        <h3>Censura</h3>
+        <p>
+          Advanced censorship plugin for bukkit minecraft servers.
+        </p>
+        <p>
+          <a href="https://modrinth.com/plugin/censura" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/Censura"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/njn.png" alt="NotJustNameplates logo"/>
+      </div>
+      <div class="description">
+        <h3>NotJustNamePlates</h3>
+        <p>
+          Minecraft purpur plugin replacing player nametags with display entities for ultimate control over them.
+        </p>
+        <p>
+          <a href="https://modrinth.com/plugin/notjustnameplates" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/NotJustNameplates"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/yardwatch.png" alt="YardWatch logo"/>
+      </div>
+      <div class="description">
+        <h3>YardWatch</h3>
+        <p>
+          A pair of API and bukkit plugin that unifies protection plugin APIs
+        </p>
+        <p>
+          <a href="https://modrinth.com/plugin/yardwatch" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/YardWatch"  target="_blank">Source (plugin)</a> | <a href="https://github.com/YouHaveTrouble/YardWatchAPI"  target="_blank">Source (API)</a>
+      </div>
+    </article>
+    <h2 id="websites"><a href="#websites">Websites</a></h2>
+    <hr>
+    <article>
+      <div class="icon" >
+        <img src="/assets/projects/meapi.png" alt="MeAPI logo"/>
+      </div>
+      <div class="description">
+        <h3>MeAPI</h3>
+        <p>
+          API about me. See if I'm online, and if so, what game I'm playing.
+        </p>
+        <p>
+          <a href="https://api.youhavetrouble.me" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/MeAPI"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/iwotd.png" alt="Interesting website of the Day logo"/>
+      </div>
+      <div class="description">
+        <h3>Interesting Website of the Day</h3>
+        <p>
+          Daily showcase of interesting websites from my personal database.
+        </p>
+        <p>
+          <a href="https://interesting-website.yht.one" target="_blank">Website</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/guildmaster.png" alt="Guild Master logo"/>
+      </div>
+      <div class="description">
+        <h3>Guild Master</h3>
+        <p>
+          Adventurer's guild management browser game.
+        </p>
+        <p>
+          <a href="https://guildmaster.yht.one" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/GuildMaster"  target="_blank">Source</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon">
+        <img src="/assets/projects/dumbforkgenerator.png" alt="Dumb Forks Generator logo"/>
+      </div>
+      <div class="description">
+        <h3>Dumb Forks Generator</h3>
+        <p>
+          PHP name generator for dumb minecraft server software fork names.
+        </p>
+        <p>
+          <a href="https://dumbforks.yht.one" target="_blank">Website</a>
+      </div>
+    </article>
+    <article>
+      <div class="icon" aria-label="">
+        <img src="/assets/projects/guesstheanime.png" alt="Guess the Anime logo"/>
+      </div>
+      <div class="description">
+        <h3>Guess the Anime</h3>
+        <p>
+          A game where you guess an anime title based off blurred art and a synopsis.
+        </p>
+        <p>
+          <a href="https://guessanime.yht.one" target="_blank">Website</a> | <a href="https://github.com/YouHaveTrouble/GuessTheAnime"  target="_blank">Source</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.25rem;
+  }
+
+  .icon {
+    width: 8rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--text-main);
+    border-radius: 0.25rem;
+    font-weight: 600;
+  }
+
+  .description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: min(100%, 25rem);
+  }
+
+  .description > * {
+    margin-block: 0.5rem;
+  }
+
+  .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.25rem;
+  }
+</style>
