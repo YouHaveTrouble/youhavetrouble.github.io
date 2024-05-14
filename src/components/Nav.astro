@@ -4,6 +4,19 @@ const { current = '' } = Astro.props;
 ---
 
 <style>
+
+  @media (orientation: portrait) {
+    nav {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-buttons {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+  }
+
   nav {
     align-items: center;
     display: flex;
@@ -12,6 +25,12 @@ const { current = '' } = Astro.props;
     font-weight: 700;
     justify-content: flex-end;
     text-transform: uppercase;
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
   }
 
   a {
@@ -56,9 +75,11 @@ const { current = '' } = Astro.props;
 </style>
 
 <nav>
-  <a class={current === "" ? "selected" : ""} href='/'>home</a>
-  <a class={current === "about" ? "selected" : ""} href='/about'>about</a>
-  <a class={current === "blog" ? "selected" : ""} href='/blog'>blog</a>
+  <div class="nav-buttons">
+    <a class={current === "" ? "selected" : ""} href='/'>home</a>
+    <a class={current === "about" ? "selected" : ""} href='/about'>about</a>
+    <a class={current === "blog" ? "selected" : ""} href='/blog'>blog</a>
+  </div>
   <div class="theme-toggle-container">
     <ThemeToggleButton client:load />
   </div>
