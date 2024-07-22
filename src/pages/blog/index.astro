@@ -2,11 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Blog';
-const description = 'Latest articles.';
+const description = 'Something that\'s supposed to be thoughts';
 const permalink = `${Astro.site.href}blog`;
 let allPosts = [];
 try {
-  allPosts = await Astro.glob('../../data/blog-posts/*.md');
+  allPosts = await Astro.glob('../../content/posts/*.md');
 } catch (error) {
   console.error('No blog posts found');
 }

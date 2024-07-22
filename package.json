@@ -9,12 +9,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.0",
-    "@astrojs/svelte": "^5.0.0",
-    "astro": "^4.0.1",
+    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/svelte": "^5.7.0",
+    "astro": "^4.12.2",
+    "markdown-it": "^14.1.0",
+    "marked": "^13.0.2",
     "reading-time": "^1.5.0",
     "rehype-external-links": "^3.0.0",
     "remark-gfm": "^4.0.0",
-    "remark-smartypants": "^2.0.0"
+    "remark-smartypants": "^2.1.0",
+    "sanitize-html": "^2.13.0",
+    "zod": "^3.23.8"
   }
 }
