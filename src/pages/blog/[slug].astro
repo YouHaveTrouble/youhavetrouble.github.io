@@ -8,8 +8,6 @@ import { marked } from 'marked';
 export async function getStaticPaths() {
 
   const posts = await getCollection('posts');
-
-
   return posts.map(p => ({
     params: {
       slug: p.slug
@@ -18,7 +16,7 @@ export async function getStaticPaths() {
       title: p.data.title,
       publishDate: p.data.publishDate,
       slug: p.slug,
-      tags: "test",
+      tags: p.data.tags,
       content: marked.parse(p.body),
       readingTime: readingTime(p.body).text,
     }
@@ -35,9 +33,9 @@ const permalink = `${Astro.site.href}blog/${slug}`;
     <p>{publishDate} ~ {readingTime}</p>
     <h1>{title}</h1>
     <div class="tags" style="justify-content: center">
-      <!--{tags.map(item => (-->
-      <!--    <span class="tag">{item}</span>-->
-      <!--))}-->
+      {tags.map(item => (
+          <span class="tag">{item}</span>
+      ))}
     </div>
     <hr />
   </header>

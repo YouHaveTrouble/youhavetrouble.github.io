@@ -1,17 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCollection} from "astro:content";
 
 const title = 'Blog';
 const description = 'Something that\'s supposed to be thoughts';
 const permalink = `${Astro.site.href}blog`;
-let allPosts = [];
-try {
-  allPosts = await Astro.glob('../../content/posts/*.md');
-} catch (error) {
-  console.error('No blog posts found');
-}
 
-allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+const posts= await getCollection('posts');
+const allPosts= posts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} current="blog">
@@ -19,22 +15,22 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
     <h1>Blog</h1>
     {allPosts.length === 0 && <p>No posts as of yet, hop back later!</p>}
     {allPosts.map((post, index) => {
-      const href = `/blog/${post.file.split('/').pop().split('.').shift()}`;
+      const href = `/blog/${post.slug}`;
       return (
         <div>
           { index !== 0 && <hr /> }
           <div class="post-item">
             <h2>
-              <a href={href}>{post.frontmatter.title}</a>
+              <a href={href}>{post.data.title}</a>
             </h2>
             <div class="tags">
-              {post.frontmatter.tags.map(item => (
+              {post.data.tags.map(item => (
                   <span class="tag">{item}</span>
               ))}
             </div>
-            <p>{post.frontmatter.description}</p>
+            <p>{post.data.description}</p>
             <div class="post-item-footer">
-              <span class="post-item-date">— {post.frontmatter.publishDate}</span>
+              <span class="post-item-date">— {post.data.publishDate}</span>
             </div>
           </div>
         </div>
