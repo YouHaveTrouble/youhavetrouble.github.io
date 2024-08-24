@@ -1,3 +1,12 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/img/yht_logo.png';
+---
+
+<a href="/">
+  <Image src={logoImage} alt="Logo displaying a stylized character with brown hair wearing purple hoodie on a light blue circle background" width="50" height="50"/>
+</a>
+
 <style>
 
   @media screen and (max-width: 520px) {
@@ -7,7 +16,3 @@
   }
 
 </style>
-
-<a href="/">
-  <img alt="Logo displaying a stylized character with brown hair wearing purple hoodie on a light blue circle background" src="/assets/yht_logo.png" width="50px" height="50px" />
-</a>
