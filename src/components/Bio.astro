@@ -1,5 +1,9 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/img/yht_logo.png';
+---
 <div>
-  <img src="/assets/yht_logo.png" alt="YouHaveTrouble's logo">
+  <Image src={logoImage} alt="Logo displaying a stylized character with brown hair wearing purple hoodie on a light blue circle background" width="150" height="150"/>
   <p>
     Hi, I'm <strong>Paweł</strong>, also known by <strong>YouHaveTrouble</strong> on the internet.
     I'm a full-stack web developer and minecraft plugin developer.
@@ -10,6 +14,7 @@
   div {
     align-items: center;
     display: flex;
+    flex-direction: row;
   }
 
   img {
@@ -22,5 +27,16 @@
 
   p {
     font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 520px) {
+    div {
+      flex-direction: column;
+    }
+    img {
+      margin-right: unset;
+      width: 150px;
+      height: 150px;
+    }
   }
 </style>

@@ -1,10 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import logoImage from '../assets/img/yht_logo.png';
+
+const { width, height } = Astro.props;
 ---
 
 <a href="/">
-  <Image src={logoImage} alt="Logo displaying a stylized character with brown hair wearing purple hoodie on a light blue circle background" width="50" height="50"/>
+  <Image src={logoImage} alt="Logo displaying a stylized character with brown hair wearing purple hoodie on a light blue circle background" width={width} height={height}/>
 </a>
 
 <style>
