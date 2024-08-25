@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {marked} from "marked";
+
+const title = 'Resume';
+const description = 'Something for potential employers to look at.';
+const permalink = Astro?.site?.href + 'resume' ?? '/resume';
+
+const resumeFiles = import.meta.glob('../../public/resume.md', { query: "?raw"});
+let resumeContent = '';
+
+for (const path in resumeFiles) {
+  const file: {default: string} = await resumeFiles[path]() as {default: string};
+  resumeContent = await marked(file.default);
+}
+---
+
+<BaseLayout title={title} description={description} permalink={permalink}>
+  <header>
+    <h1>Resume</h1>
+    <p><a href="/resume.md" download>Download my resume as a markdown file</a></p>
+  </header>
+  <div class="container">
+    <article class="content" set:html={resumeContent}></article>
+  </div>
+</BaseLayout>
+
+<style>
+  header {
+    text-align: center;
+  }
+
+  header h1 {
+    margin-bottom: 0.25em;
+  }
+
+  header p {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  header hr {
+    min-width: 100px;
+    width: 30%;
+  }
+
+  .content h2 {
+
+  }
+</style>
