@@ -9,6 +9,18 @@ const posts = defineCollection({
     image: z.string().optional(),
   }),
 });
+const projects = defineCollection({
+  type: 'content',
+  schema: z.object({
+    category: z.string(),
+    name: z.string(),
+    description: z.string(),
+    image: z.string().optional(),
+    links: z.array(z.object({text: z.string(), url: z.string()})),
+  }),
+});
+
 export const collections = {
   posts,
+  projects,
 };
