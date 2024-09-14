@@ -11,8 +11,13 @@ const permalink = Astro?.site?.href ?? '/';
     <div class="home-copy">
       <h1>Welcome to my little corner of the interwebs</h1>
       <p>Feel free to check out what I got in store!</p>
+      <div class="status">
+        <div class="wrap">
+          <span>My online status:</span>
+          <span id="online-status">Unknown</span><span id="online-game"></span>
+        </div>
+      </div>
     </div>
-
     <div class="hero-socials">
       <h2>Socials</h2>
       <div class="hero-socials-grid">
@@ -33,18 +38,19 @@ const permalink = Astro?.site?.href ?? '/';
           <span>Steam</span>
         </a>
         <a href="https://www.youtube.com/@YouHaveTrouble" class="social-link" target="_blank" rel="external">
-          <img src="/assets/icons/youtube.svg" alt="" aria-hidden="true"  draggable="false" loading="eager">
+          <img src="/assets/icons/youtube.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
           <span>YouTube</span>
         </a>
         <a href="https://modrinth.com/user/YouHaveTrouble" class="social-link" target="_blank" rel="external">
-          <img src="/assets/icons/modrinth.svg" alt="" aria-hidden="true"  draggable="false" loading="eager">
+          <img src="/assets/icons/modrinth.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
           <span>Modrinth</span>
         </a>
         <a href="https://wakatime.com/@YouHaveTrouble" class="social-link" target="_blank" rel="external">
-          <img src="/assets/icons/wakatime.svg" alt="" aria-hidden="true"  draggable="false" loading="eager">
+          <img src="/assets/icons/wakatime.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
           <span>WakaTime</span>
         </a>
-        <a href="https://www.linkedin.com/in/pawel-youhavetrouble-michalewski/" class="social-link" target="_blank" rel="external">
+        <a href="https://www.linkedin.com/in/pawel-youhavetrouble-michalewski/" class="social-link" target="_blank"
+           rel="external">
           <img src="/assets/icons/linkedin.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
           <span>LinkedIn</span>
         </a>
@@ -54,11 +60,29 @@ const permalink = Astro?.site?.href ?? '/';
         </a>
       </div>
     </div>
-
   </div>
 </BaseLayout>
 
-<style>
+<script lang="ts" client:load>
+  const status = document.querySelector("#online-status");
+  const game = document.querySelector("#online-game");
+
+  updateOnlineStatus();
+
+  async function updateOnlineStatus() {
+    console.debug("Updating online status...");
+    const response = await fetch("https://api.youhavetrouble.me/online");
+    const data = await response.json();
+    const online = data.discord !== "OFFLINE" || data.steam !== "OFFLINE";
+    const gameName = data.steam.game;
+    status.textContent = online ? "Online" : "Offline";
+    status.classList.value = online ? "online" : "offline";
+    game.textContent = gameName ? `, playing: ${gameName}` : "";
+    setTimeout(updateOnlineStatus, 10000);
+  }
+</script>
+
+<style lang="scss">
   .home-container {
     align-items: center;
     display: flex;
@@ -66,21 +90,42 @@ const permalink = Astro?.site?.href ?? '/';
     justify-content: center;
     margin: 2em 0;
     min-height: 400px;
+
+    .home-copy {
+      flex: 1;
+      padding: 0 1em;
+
+      h1 {
+        font-weight: 700;
+        margin-bottom: 0.5em;
+        line-height: 1.3;
+      }
+
+      p {
+        font-size: 1.4em;
+      }
+    }
   }
 
-  .home-copy {
-    flex: 1;
-    padding: 0 1em;
-  }
+  #online-status {
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      margin-inline-end: 0.2rem;
+      transform: translateY(0.1rem);
+      background-color: #cc8d2e;
+      transition: background-color 0.2s;
+    }
+    &.online::before {
+      background-color: #2ecc71;
+    }
+    &.offline::before {
+      background-color: #e74c3c;
+    }
 
-  .home-copy h1 {
-    font-weight: 700;
-    margin-bottom: 0.5em;
-    line-height: 1.3;
-  }
-
-  .home-copy p {
-    font-size: 1.4em;
   }
 
   .hero-socials {
@@ -89,6 +134,7 @@ const permalink = Astro?.site?.href ?? '/';
     max-width: min(100%, 450px);
     text-align: center;
     gap: 1.5rem;
+
     .hero-socials-grid {
       margin: 0 1em;
       display: flex;
@@ -97,6 +143,7 @@ const permalink = Astro?.site?.href ?? '/';
       align-items: center;
       width: 100%;
       gap: 0.75rem;
+
       a {
         display: flex;
         justify-content: center;
@@ -111,6 +158,7 @@ const permalink = Astro?.site?.href ?? '/';
         padding: 0.5rem;
         gap: 0.25rem;
         border-radius: 0.25rem;
+
         &:hover {
           color: var(--text-main);
           border-color: var(--text-main);
