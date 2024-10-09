@@ -1,22 +1,14 @@
 :root {
-  --background-body: #fff;
-  --text-main: #36393b;
-  --text-secondary: #6b6f72;
+  --background-body: #202122;
+  --text-main: #fff;
+  --text-secondary: #ccc;
   --primary-color: #548e9b;
   --font-family-serif: Merriweather, serif;
   --font-family-sans: 'Fira Sans', sans-serif;
 }
 
-
 @view-transition {
   navigation: auto;
-}
-
-:root.theme-dark {
-  --background-body: #202122;
-  --text-main: #fff;
-  --text-secondary: #ccc;
-  --primary-color: #548e9b;
 }
 
 html {
