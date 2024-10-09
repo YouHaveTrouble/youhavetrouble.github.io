@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ViewCounter from "../components/ViewCounter.astro";
 
 const title = 'Home';
 const description = 'My little corner of the internet.';
@@ -15,6 +16,9 @@ const permalink = Astro?.site?.href ?? '/';
         <div class="wrap">
           <span>My online status:</span>
           <span id="online-status">Unknown</span><span id="online-game"></span>
+        </div>
+        <div class="wrap">
+          <ViewCounter />
         </div>
       </div>
     </div>
@@ -66,9 +70,7 @@ const permalink = Astro?.site?.href ?? '/';
 <script>
   let task = -1;
 
-  document.addEventListener('astro:page-load', () => {
-    updateOnlineStatus();
-  });
+  updateOnlineStatus();
 
   async function updateOnlineStatus() {
     clearTimeout(task);
@@ -161,10 +163,11 @@ const permalink = Astro?.site?.href ?? '/';
         text-decoration: none;
         border-width: 1px;
         border-style: solid;
-        border-color: transparent;
+        border-color: rgba(255, 255, 255, 0);
         padding: 0.5rem;
         gap: 0.25rem;
         border-radius: 0.25rem;
+        transition: border-color 0.2s, color 0.2s;
 
         &:hover {
           color: var(--text-main);

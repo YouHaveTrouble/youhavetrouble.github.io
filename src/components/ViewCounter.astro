@@ -1,0 +1,58 @@
+<div class="view-counter">
+  <div data-viewcount>
+    <span>?</span>
+  </div>
+  <div>unique visitors</div>
+</div>
+
+<style lang="scss" is:global>
+  .view-counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 1rem;
+    width: max-content;
+    text-align: center;
+
+    [data-viewcount] {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1;
+      gap: 0.2rem;
+      padding: 0.25rem;
+      font-size: 1.25rem;
+      span {
+        display: inline-block;
+        background: black;
+        color: white;
+        padding: 0.5ch;
+        font-family: monospace;
+      }
+    }
+
+  }
+
+</style>
+
+<script>
+
+  updateViewCount();
+
+  async function updateViewCount() {
+    const viewCounter = document.querySelector("[data-viewcount]");
+    if (!viewCounter) return;
+    const result = await fetch("https://youhavetrouble-view_counter.web.val.run").catch(() => null);
+    if (result === null) return;
+    const json = await result.json();
+    const rawCount = json.count;
+    const chars = rawCount.toString();
+    viewCounter.innerHTML = "";
+    for (let i = 0; i < chars.length; i++) {
+      const span = document.createElement("span");
+      span.textContent = chars[i];
+      viewCounter.appendChild(span);
+    }
+  }
+
+</script>
