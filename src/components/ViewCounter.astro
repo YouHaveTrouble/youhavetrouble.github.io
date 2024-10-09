@@ -49,14 +49,27 @@
 <script>
 
   updateViewCount();
+  let previousCount = 0;
 
   async function updateViewCount() {
     const viewCounter = document.querySelector("[data-viewcount]");
-    if (!viewCounter) return;
+    if (!viewCounter) {
+      setTimeout(updateViewCount, 10000);
+      return;
+    }
+    console.debug("Updating view count...");
     const result = await fetch("https://youhavetrouble-view_counter.web.val.run").catch(() => null);
-    if (result === null) return;
+    if (result === null) {
+      setTimeout(updateViewCount, 10000);
+      return;
+    }
     const json = await result.json();
     const rawCount = json.count;
+    if (rawCount === previousCount) {
+      setTimeout(updateViewCount, 10000);
+      return;
+    }
+    previousCount = rawCount;
     let chars = rawCount.toString();
     while (chars.length < 6) {
       chars = "0" + chars;
@@ -67,6 +80,7 @@
       span.textContent = chars[i];
       viewCounter.appendChild(span);
     }
+    setTimeout(updateViewCount, 10000);
   }
 
 </script>
