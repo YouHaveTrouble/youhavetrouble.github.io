@@ -1,6 +1,11 @@
 <div class="view-counter">
   <div data-viewcount>
     <span>?</span>
+    <span>?</span>
+    <span>?</span>
+    <span>?</span>
+    <span>?</span>
+    <span>?</span>
   </div>
   <div>unique visitors</div>
 </div>
@@ -52,7 +57,10 @@
     if (result === null) return;
     const json = await result.json();
     const rawCount = json.count;
-    const chars = rawCount.toString();
+    let chars = rawCount.toString();
+    while (chars.length < 6) {
+      chars = "0" + chars;
+    }
     viewCounter.innerHTML = "";
     for (let i = 0; i < chars.length; i++) {
       const span = document.createElement("span");
