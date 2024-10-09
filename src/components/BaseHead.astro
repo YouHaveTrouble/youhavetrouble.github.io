@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
 import '../styles/fonts.css'
 import '../styles/global.css'
 
@@ -10,7 +9,7 @@ export interface Props {
 }
 
 const { title, description, permalink } = Astro.props
-const socialUrl = Astro.site.href + 'assets/yht_logo.png'
+const socialUrl = Astro?.site?.href + 'assets/yht_logo.png'
 ---
 
 <!-- Global Metadata -->
@@ -23,6 +22,10 @@ const socialUrl = Astro.site.href + 'assets/yht_logo.png'
     title="YouHaveBlog RSS Feed"
     href={new URL("rss.xml", Astro.site)}
 />
+
+<link rel="preload" href="/assets/fonts/va9B4kDNxMZdWfMOD5VnLK3eRhf6Xl7Glw.woff2" as="font" crossorigin="anonymous" />
+<link rel="preload" href="/assets/fonts/u-440qyriQwlOrhSvowK_l5-fCZMdeX3rg.woff2" as="font" crossorigin="anonymous" />
+<link rel="preload" href="/assets/fonts/u-4n0qyriQwlOrhSvowK_l52xwNZWMf6hPvhPQ.woff2" as="font" crossorigin="anonymous"/>
 
 <!-- Primary Meta Tags -->
 <title> {title} | YouHaveTrouble's place</title>
@@ -42,8 +45,6 @@ const socialUrl = Astro.site.href + 'assets/yht_logo.png'
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={socialUrl} />
-
-<ViewTransitions />
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>

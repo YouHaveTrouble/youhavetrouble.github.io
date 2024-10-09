@@ -7,10 +7,10 @@
   --font-family-sans: 'Fira Sans', sans-serif;
 }
 
-/* break comment when time is right */
-/*@view-transition {*/
-/*  navigation: auto;*/
-/*}*/
+
+@view-transition {
+  navigation: auto;
+}
 
 :root.theme-dark {
   --background-body: #202122;
