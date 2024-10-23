@@ -75,9 +75,9 @@ const { current = '' } = Astro.props;
 
 <nav>
   <div class="nav-buttons">
-    <a class={current === "" ? "selected" : ""} href='/'>home</a>
-    <a class={current === "about" ? "selected" : ""} href='/about'>about</a>
-    <a class={current === "projects" ? "selected" : ""} href='/projects'>projects</a>
-    <a class={current === "blog" ? "selected" : ""} href='/blog'>blog</a>
+    <a data-astro-prefetch class={current === "" ? "selected" : ""} href='/'>home</a>
+    <a data-astro-prefetch class={current === "about" ? "selected" : ""} href='/about'>about</a>
+    <a data-astro-prefetch class={current === "projects" ? "selected" : ""} href='/projects'>projects</a>
+    <a data-astro-prefetch class={current === "blog" ? "selected" : ""} href='/blog'>blog</a>
   </div>
 </nav>

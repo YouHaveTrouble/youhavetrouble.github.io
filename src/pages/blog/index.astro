@@ -21,7 +21,7 @@ const allPosts= posts.sort((a, b) => new Date(b.data.publishDate).valueOf() - ne
           { index !== 0 && <hr /> }
           <div class="post-item">
             <h2>
-              <a href={href}>{post.data.title}</a>
+              <a data-astro-prefetch href={href}>{post.data.title}</a>
             </h2>
             <div class="tags">
               {post.data.tags.map(item => (
