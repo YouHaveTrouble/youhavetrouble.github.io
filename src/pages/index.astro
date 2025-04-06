@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ViewCounter from "../components/ViewCounter.astro";
+import { Image } from 'astro:assets';
+import tinyYHT from '../assets/img/tiny_yht.png';
 
 const title = 'Home';
 const description = 'My little corner of the internet.';
@@ -10,18 +12,28 @@ const permalink = Astro?.site?.href ?? '/';
 <BaseLayout title={title} description={description} permalink={permalink}>
   <div class="home-container">
     <div class="home-copy">
-      <h1>Welcome to my little corner of the interwebs</h1>
-      <p>Feel free to check out what I got in store!</p>
+      <div>
+        <h1>Welcome to my little corner of the interwebs</h1>
+        <p>Feel free to check out what I got in store!</p>
+      </div>
+    </div>
+    <div style="width: 100%;">
       <div class="status">
-        <div class="wrap">
-          <span>My online status:</span>
-          <span id="online-status">Unknown</span><span id="online-game"></span>
+        <div class="world night">
+          <div class="tiny-yht">
+            <div class="dialog-box">
+              <span id="online-status" aria-label="Online status">Unknown</span><span id="online-game"></span>
+            </div>
+            <Image src={tinyYHT} width="30" height="30" loading="eager" alt="" aria-hidden="true" draggable="false"/>
+          </div>
+          <div class="ground"></div>
         </div>
-        <div class="wrap">
+        <div class="view-counter">
           <ViewCounter />
         </div>
       </div>
     </div>
+
     <div class="hero-socials">
       <h2>Socials</h2>
       <div class="hero-socials-grid">
@@ -67,51 +79,78 @@ const permalink = Astro?.site?.href ?? '/';
   </div>
 </BaseLayout>
 
-<script>
-  let task = -1;
-
-  updateOnlineStatus();
-
-  async function updateOnlineStatus() {
-    clearTimeout(task);
-    const status = document.querySelector("#online-status");
-    const game = document.querySelector("#online-game");
-    if (!status || !game) return;
-    console.debug("Updating online status...");
-    const response = await fetch("https://api.youhavetrouble.me/online");
-    const data = await response.json();
-    const online = data.discord !== "OFFLINE" || data.steam !== "OFFLINE";
-    const gameName = data.steam.game;
-    status.textContent = online ? "Online" : "Offline";
-    status.classList.value = online ? "online" : "offline";
-    game.textContent = gameName ? `, playing: ${gameName}` : "";
-    setTimeout(updateOnlineStatus, 5000);
-  }
-</script>
-
 <style lang="scss">
   .home-container {
     align-items: center;
     display: flex;
-    flex: 1;
+    flex-direction: column;
     justify-content: center;
     margin: 2em 0;
-    min-height: 400px;
 
     .home-copy {
       flex: 1;
+      display: flex;
+      flex-direction: row;
       padding: 0 1em;
 
       h1 {
         font-weight: 700;
         margin-bottom: 0.5em;
         line-height: 1.3;
+        font-size: 2rem;
+        text-align: center;
       }
 
       p {
-        font-size: 1.4em;
+        text-align: center;
+        font-size: 1.2rem;
       }
     }
+
+    .hero-socials {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      text-align: center;
+      gap: 1.5rem;
+
+      .hero-socials-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 0.75rem;
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          width: 5.5rem;
+          height: 5.5rem;
+          text-decoration: none;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgba(255, 255, 255, 0);
+          padding: 0.5rem;
+          gap: 0.25rem;
+          border-radius: 0.25rem;
+          transition: border-color 0.2s, color 0.2s;
+
+          img {
+            width: 3rem;
+            height: 3rem;
+          }
+
+          &:hover {
+            color: var(--text-main);
+            border-color: var(--text-main);
+          }
+        }
+      }
+    }
+
   }
 
   #online-status {
@@ -137,53 +176,95 @@ const permalink = Astro?.site?.href ?? '/';
 
   }
 
-  .hero-socials {
+  .world {
+    position: relative;
+    width: 100%;
+    background-color: var(--sky-color);
+    padding: 1rem;
+    min-height: 10rem;
     display: flex;
-    flex-direction: column;
-    max-width: min(100%, 450px);
-    text-align: center;
-    gap: 1.5rem;
-
-    .hero-socials-grid {
-      margin: 0 1em;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
+    align-items: center;
+    justify-content: center;
+    --sky-color: #87CEEB;
+    --ground-color: #8B4513;
+    --grass-color: #4CAF50;
+    transition: background-color 1s linear;
+    border-radius: 0.5rem;
+    &.night {
+      --sky-color: #000000;
+      --ground-color: #3a1c08;
+      --grass-color: #214d23;
+    }
+    .ground {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2.5rem;
       width: 100%;
-      gap: 0.75rem;
-
-      a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 5.5rem;
-        height: 5.5rem;
-        text-decoration: none;
-        border-width: 1px;
-        border-style: solid;
-        border-color: rgba(255, 255, 255, 0);
-        padding: 0.5rem;
-        gap: 0.25rem;
-        border-radius: 0.25rem;
-        transition: border-color 0.2s, color 0.2s;
-
-        &:hover {
-          color: var(--text-main);
-          border-color: var(--text-main);
-        }
+      background-color: var(--ground-color);
+      transition: background-color 1s linear;
+      border-radius: 0.5rem;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1rem;
+        background-color: var(--grass-color);
+        transition: background-color 1s linear;
       }
     }
+    .tiny-yht {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      position: relative;
+      margin-top: 2.9rem;
+      transition: transform 3s linear;
+      .dialog-box {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-0.2rem);
+        width: max-content;
+        max-width: 250px;
+        right: 0;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        animation: dialog-hover 1s ease-in-out infinite alternate;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 0.8rem;
+          height: 0.8rem;
+          bottom: -0.45rem;
+          background-color: white;
+          border-bottom: 1px solid black;
+          border-right: 1px solid black;
+          transform: rotate(45deg);
+        }
+      }
+      img {
+        image-rendering: pixelated;
+      }
+    }
+
   }
 
-  html:not(.theme-dark) .hero-socials-grid a img {
-    filter: invert(0.8);
-  }
-
-  .hero-socials-grid a img {
-    width: 3rem;
-    height: 3rem;
+  .view-counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
   }
 
   @media (max-width: 1200px) {
@@ -203,4 +284,118 @@ const permalink = Astro?.site?.href ?? '/';
       text-align: center;
     }
   }
+
+  @media (min-width: 600px) {
+    .tiny-yht:not(.night) {
+      animation: wander 120s infinite;
+    }
+  }
+
+  @keyframes wander {
+    0% {
+      transform: translateX(0);
+    }
+    5% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(200%);
+    }
+    15% {
+      transform: translateX(200%);
+    }
+    20% {
+      transform: translateX(140%);
+    }
+    25% {
+      transform: translateX(140%);
+    }
+    30% {
+      transform: translateX(100%);
+    }
+    35% {
+      transform: translateX(100%);
+    }
+    40% {
+      transform: translateX(50%);
+    }
+    45% {
+      transform: translateX(50%);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    55% {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(-50%);
+    }
+    65% {
+      transform: translateX(-50%);
+    }
+    70% {
+      transform: translateX(-100%);
+    }
+    75% {
+      transform: translateX(-100%);
+    }
+    80% {
+      transform: translateX(140%);
+    }
+    85% {
+      transform: translateX(140%);
+    }
+    90% {
+      transform: translateX(-200%);
+    }
+    95% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+
+  }
+
+  @keyframes dialog-hover {
+    0% {
+      margin-bottom: 0;
+    }
+    100% {
+      margin-bottom: 0.1rem;
+    }
+  }
+
 </style>
+
+
+<script>
+  let task = -1;
+
+  updateOnlineStatus();
+
+  async function updateOnlineStatus() {
+    clearTimeout(task);
+    const status = document.querySelector("#online-status");
+    const game = document.querySelector("#online-game");
+    const world = document.querySelector(".world");
+    if (!status || !game) return;
+    console.debug("Updating online status...");
+    const response = await fetch("https://api.youhavetrouble.me/online");
+    const data = await response.json();
+    const online = data.discord !== "OFFLINE" || data.steam !== "OFFLINE";
+    const gameName = data.steam.game;
+    status.textContent = online ? "Online" : "Offline";
+    status.classList.value = online ? "online" : "offline";
+    game.textContent = gameName ? `Playing: ${gameName}` : "";
+    if (world) {
+      if (!online) {
+        world.classList.add("night");
+      } else {
+        world.classList.remove("night");
+      }
+    }
+    setTimeout(updateOnlineStatus, 5000);
+  }
+</script>
