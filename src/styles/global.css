@@ -25,6 +25,7 @@ p {
   html {
     overflow-y: auto;
     scrollbar-gutter: stable;
+    scrollbar-color: var(--primary-color) transparent;
   }
 }
 
@@ -52,6 +53,7 @@ h6 {
   font-family: var(--font-family-sans);
   font-weight: 700;
   line-height: 1.2;
+  margin: 0;
 }
 
 h1 {

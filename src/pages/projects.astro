@@ -4,7 +4,7 @@ import {getCollection} from "astro:content";
 
 const title = 'Projects';
 const description = 'Stuff I\'m working on.';
-const permalink = `${Astro.site.href}projects`;
+const permalink = `${Astro?.site?.href}projects`;
 
 const projectsCollection = await getCollection('projects');
 projectsCollection.sort((a, b) => a.data.name.localeCompare(b.data.name));

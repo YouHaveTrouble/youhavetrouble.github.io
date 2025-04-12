@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ActivityWidget from "../components/ActivityWidget.astro";
 import ViewCounter from "../components/ViewCounter.astro";
 import SocialsWidget from "../components/SocialsWidget.astro";
+import ProjectsFeature from "../components/ProjectsFeature.astro";
 
 const title = 'Home';
 const description = 'My little corner of the internet.';
@@ -22,6 +23,7 @@ const permalink = Astro?.site?.href ?? '/';
       <ViewCounter/>
     </div>
     <SocialsWidget />
+    <ProjectsFeature />
   </div>
 </BaseLayout>
 
@@ -32,6 +34,7 @@ const permalink = Astro?.site?.href ?? '/';
     flex-direction: column;
     justify-content: center;
     margin: 2em 0;
+    gap: 2rem;
 
     .home-copy {
       flex: 1;

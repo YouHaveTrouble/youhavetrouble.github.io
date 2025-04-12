@@ -1,0 +1,131 @@
+---
+import {getCollection} from "astro:content";
+
+const projects = await getCollection('projects');
+projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+<section id="projects">
+  <h2>Projects</h2>
+  <p>
+    Here are some of the projects I'm working on. Most of them are open source, so feel free to check them out!
+    <br>
+    Projects presented here are what I consider in presentable and/or finished state. They might or might not get
+    updates.
+    <br>
+    Most logos generated using <a href="https://huggingface.co/spaces/dalle-mini/dalle-mini" target="_blank">DALL-E mini</a>.
+  </p>
+  <div class="showcase">
+    {
+      projects.map((project, index) => {
+        return (
+            <article class="project">
+              <div class="icon">
+                <img
+                    src={project.data.image}
+                    alt=""
+                    aria-hidden="true"
+                    loading={index > 4 ? "lazy" : "eager"}
+                    decoding="async"
+                    draggable="false"
+                />
+              </div>
+              <div class="description">
+                <h3>{project.data.name}</h3>
+                <span>{project.data.description}</span>
+              </div>
+              <div class="links">
+                {
+                  project.data.links.map((link) => {
+                    return (
+                        <span>
+                          <a href={link.url} target="_blank">{link.text}</a>
+                      </span>
+                    )
+                  })
+                }
+              </div>
+            </article>
+        )
+      })
+    }
+  </div>
+
+</section>
+
+<style lang="scss" scoped>
+  section {
+    text-align: center;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .showcase {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    max-width: 100%;
+    gap: 0.75rem;
+    scroll-snap-type: x mandatory;
+    padding-block: 0.25rem;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    border-radius: 0.25rem;
+    background-color: #313131;
+    min-width: min(20rem, calc(100% - 1.5rem));
+    max-width: min(20rem, calc(100% - 1.5rem));
+    scroll-snap-align: start;
+
+    .icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 0.25rem;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.25rem;
+      }
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+      flex: 1 1;
+      padding-block: 0.5rem;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      line-height: 1;
+      a {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .showcase {
+      padding-inline: 0;
+    }
+    .project {
+      scroll-margin-inline: 0;
+      scroll-snap-align: center;
+    }
+  }
+</style>
