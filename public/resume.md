@@ -14,7 +14,7 @@
 
 #### Technologies:
 - PHP (Symfony)
-- JavaScript (Vanilla, Vue.js, Astro)
+- JavaScript (Vanilla, TypeScript, Vue.js, Astro)
 - HTML
 - CSS, SCSS
 - MySQL, SQLite
@@ -31,7 +31,7 @@
 
 #### Technologies:
 - Java
-- JavaScript (Vanilla, Vue.js, Astro)
+- JavaScript (Vanilla, TypeScript, Vue.js, Astro)
 - HTML
 - CSS, SCSS
 - Git

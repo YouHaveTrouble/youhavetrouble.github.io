@@ -4,7 +4,7 @@ import {marked} from "marked";
 
 const title = 'Resume';
 const description = 'Something for potential employers to look at.';
-const permalink = Astro?.site?.href + 'resume' ?? '/resume';
+const permalink = `${Astro?.site?.href}resume`;
 
 const resumeFiles = import.meta.glob('../../public/resume.md', { query: "?raw"});
 let resumeContent = '';
