@@ -1,0 +1,212 @@
+---
+import {Image} from "astro:assets";
+import tinyYHT from '../assets/img/tiny_yht.png';
+---
+<div class="status">
+  <div class="world night">
+    <div class="tiny-yht">
+      <div class="dialog-box">
+        <span id="online-status" aria-label="Online status">Unknown</span><span id="online-game"><noscript>Turn javascript on!</noscript></span>
+      </div>
+      <Image src={tinyYHT} width="30" height="30" loading="eager" alt="" aria-hidden="true" draggable="false"/>
+    </div>
+    <div class="ground"></div>
+  </div>
+</div>
+
+<style lang="scss" scoped>
+  #online-status {
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      margin-inline-end: 0.2rem;
+      transform: translateY(0.1rem);
+      background-color: #cc8d2e;
+      transition: background-color 0.2s;
+    }
+
+    &.online::before {
+      background-color: #2ecc71;
+    }
+
+    &.offline::before {
+      background-color: #e74c3c;
+    }
+
+  }
+
+  .world {
+    position: relative;
+    width: 100%;
+    background-color: var(--sky-color);
+    padding: 1rem;
+    min-height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --sky-color: #87CEEB;
+    --ground-color: #8B4513;
+    --grass-color: #4CAF50;
+    transition: background-color 1s linear;
+    border-radius: 0.5rem;
+
+    &.night {
+      --sky-color: #000000;
+      --ground-color: #3a1c08;
+      --grass-color: #214d23;
+    }
+
+    .ground {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2.5rem;
+      width: 100%;
+      background-color: var(--ground-color);
+      transition: background-color 1s linear;
+      border-radius: 0.5rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1rem;
+        background-color: var(--grass-color);
+        transition: background-color 1s linear;
+      }
+    }
+
+    .tiny-yht {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      position: relative;
+      margin-top: 2.9rem;
+      transition: transform 3s linear;
+
+      .dialog-box {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-0.2rem);
+        width: max-content;
+        max-width: 250px;
+        right: 0;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        animation: dialog-hover 1s ease-in-out infinite alternate;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 0.8rem;
+          height: 0.8rem;
+          bottom: -0.45rem;
+          background-color: white;
+          border-bottom: 1px solid black;
+          border-right: 1px solid black;
+          transform: rotate(45deg);
+        }
+      }
+
+      img {
+        image-rendering: pixelated;
+      }
+    }
+
+  }
+
+  @media (min-width: 600px) {
+    .tiny-yht:not(.night) {
+      animation: wander 120s infinite;
+    }
+  }
+
+  @keyframes wander {
+    0% {
+      transform: translateX(0);
+    }
+    5% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(200%);
+    }
+    15% {
+      transform: translateX(200%);
+    }
+    20% {
+      transform: translateX(140%);
+    }
+    25% {
+      transform: translateX(140%);
+    }
+    30% {
+      transform: translateX(100%);
+    }
+    35% {
+      transform: translateX(100%);
+    }
+    40% {
+      transform: translateX(50%);
+    }
+    45% {
+      transform: translateX(50%);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    55% {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(-50%);
+    }
+    65% {
+      transform: translateX(-50%);
+    }
+    70% {
+      transform: translateX(-100%);
+    }
+    75% {
+      transform: translateX(-100%);
+    }
+    80% {
+      transform: translateX(140%);
+    }
+    85% {
+      transform: translateX(140%);
+    }
+    90% {
+      transform: translateX(-200%);
+    }
+    95% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes dialog-hover {
+    0% {
+      margin-bottom: 0;
+    }
+    100% {
+      margin-bottom: 0.1rem;
+    }
+  }
+</style>

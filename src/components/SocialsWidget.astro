@@ -1,0 +1,113 @@
+<section>
+  <h2>Socials</h2>
+  <div class="grid">
+    <a href="https://github.com/YouHaveTrouble" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/github.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>GitHub</span>
+    </a>
+    <a href="https://discord.youhavetrouble.me" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/discord.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>Discord</span>
+    </a>
+    <a href="https://ko-fi.com/youhavetrouble" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/kofi.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>Ko-fi</span>
+    </a>
+    <a href="https://steamcommunity.com/id/YouHavetrouble" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/steam.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>Steam</span>
+    </a>
+    <a href="https://www.youtube.com/@YouHaveTrouble" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/youtube.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>YouTube</span>
+    </a>
+    <a href="https://modrinth.com/user/YouHaveTrouble" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/modrinth.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>Modrinth</span>
+    </a>
+    <a href="https://wakatime.com/@YouHaveTrouble" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/wakatime.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>WakaTime</span>
+    </a>
+    <a href="https://www.linkedin.com/in/pawel-youhavetrouble-michalewski/" class="social-link" target="_blank"
+       rel="external">
+      <img src="/assets/icons/linkedin.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>LinkedIn</span>
+    </a>
+    <a href="mailto://contact@youhavetrouble.me" class="social-link" target="_blank" rel="external">
+      <img src="/assets/icons/email.svg" alt="" aria-hidden="true" draggable="false" loading="eager">
+      <span>Email</span>
+    </a>
+  </div>
+</section>
+
+<style lang="scss" scoped>
+  section {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    text-align: center;
+    gap: 1.5rem;
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 1rem;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 5.5rem;
+        height: 5.5rem;
+        text-decoration: none;
+        padding: 0.5rem;
+        gap: 0.25rem;
+
+        span {
+          color: var(--text-secondary);
+          text-align: center;
+          transition: color 0.2s ease;
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--text-secondary);
+            transition: width 0.2s ease;
+          }
+        }
+
+        img {
+          width: 3rem;
+          height: 3rem;
+          transition: transform 0.2s ease;
+        }
+
+        &:hover {
+          color: var(--text-main);
+          img {
+            transform: translateY(-0.2rem);
+          }
+        }
+        &:focus-visible {
+          outline: none;
+          span {
+            color: var(--primary-color);
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
