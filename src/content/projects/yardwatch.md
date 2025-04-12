@@ -13,7 +13,7 @@ links: [
     url: "https://github.com/YouHaveTrouble/YardWatch"
   },
   {
-    text: "Source (plugin)",
+    text: "Source (api)",
     url: "https://github.com/YouHaveTrouble/YardWatchAPI"
   }
 ]
