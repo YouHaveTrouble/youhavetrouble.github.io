@@ -38,6 +38,10 @@ import tinyYHT from '../assets/img/tiny_yht.png';
 
   }
 
+  #online-game {
+    white-space: nowrap;
+  }
+
   .world {
     position: relative;
     width: 100%;
@@ -100,7 +104,6 @@ import tinyYHT from '../assets/img/tiny_yht.png';
         left: 50%;
         transform: translateX(-50%) translateY(-0.2rem);
         width: max-content;
-        max-width: 250px;
         right: 0;
         background-color: white;
         color: black;
@@ -210,3 +213,48 @@ import tinyYHT from '../assets/img/tiny_yht.png';
     }
   }
 </style>
+
+<script>
+  const response = await fetch("https://api.youhavetrouble.me/online");
+  if (response.ok) {
+    const data = await response.json();
+    if (data) {
+      updateOnlineStatus(data);
+    } else {
+      console.error("No data received from API");
+    }
+  }
+
+  const eventSource = new EventSource("https://api.youhavetrouble.me/online");
+  eventSource.addEventListener("message", (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      if (data) {
+        updateOnlineStatus(data);
+      } else {
+        console.error("No data received from API");
+      }
+    } catch (e) {
+      console.error("Error parsing event data", e);
+    }
+  });
+
+  function updateOnlineStatus(data: {discord: string, steam: {status: string, game: string | null}}) {
+    const status = document.querySelector("#online-status");
+    const game = document.querySelector("#online-game");
+    const world = document.querySelector(".world");
+    if (!status || !game) return;
+    const online = data.discord !== "OFFLINE" || data.steam.status !== "OFFLINE";
+    const gameName = data.steam.game;
+    status.textContent = online ? "Online" : "Offline";
+    status.classList.value = online ? "online" : "offline";
+    game.textContent = gameName ? `Playing: ${gameName}` : "";
+    if (world) {
+      if (!online) {
+        world.classList.add("night");
+      } else {
+        world.classList.remove("night");
+      }
+    }
+  }
+</script>

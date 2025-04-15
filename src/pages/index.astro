@@ -77,34 +77,3 @@ const permalink = Astro?.site?.href ?? '/';
   }
 
 </style>
-
-
-<script>
-  let task = -1;
-
-  updateOnlineStatus();
-
-  async function updateOnlineStatus() {
-    clearTimeout(task);
-    const status = document.querySelector("#online-status");
-    const game = document.querySelector("#online-game");
-    const world = document.querySelector(".world");
-    if (!status || !game) return;
-    console.debug("Updating online status...");
-    const response = await fetch("https://api.youhavetrouble.me/online");
-    const data = await response.json();
-    const online = data.discord !== "OFFLINE" || data.steam !== "OFFLINE";
-    const gameName = data.steam.game;
-    status.textContent = online ? "Online" : "Offline";
-    status.classList.value = online ? "online" : "offline";
-    game.textContent = gameName ? `Playing: ${gameName}` : "";
-    if (world) {
-      if (!online) {
-        world.classList.add("night");
-      } else {
-        world.classList.remove("night");
-      }
-    }
-    setTimeout(updateOnlineStatus, 5000);
-  }
-</script>
