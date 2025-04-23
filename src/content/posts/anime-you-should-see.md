@@ -138,7 +138,7 @@ its story.
   </div>
 </div>
 
-Sometimes you jest need to fight trauma. Literally. Amazingly animated story about dealing with loss.
+Sometimes you just need to fight trauma. Literally. Amazingly animated story about dealing with loss.
 
 <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 4rem;">
   <a href="https://myanimelist.net/anime/550/Yu%E2%98%86Gi%E2%98%86Oh" style="display: flex; justify-content: center; align-items: center;">
