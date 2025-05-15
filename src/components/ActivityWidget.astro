@@ -8,7 +8,9 @@ import tinyYHT from '../assets/img/tiny_yht.png';
       <div class="dialog-box">
         <span id="online-status" aria-label="Online status">Unknown</span><span id="online-game"><noscript>Turn javascript on!</noscript></span>
       </div>
-      <Image src={tinyYHT} width="30" height="30" loading="eager" alt="" aria-hidden="true" draggable="false"/>
+      <div class="image">
+        <Image src={tinyYHT} width="100" height="100" loading="eager" alt="" aria-hidden="true" decoding="async" draggable="false"/>
+      </div>
     </div>
     <div class="ground"></div>
   </div>
@@ -93,6 +95,16 @@ import tinyYHT from '../assets/img/tiny_yht.png';
       position: relative;
       margin-top: 2.9rem;
       transition: transform 3s linear;
+
+      .image {
+        width: 31px;
+        height: 33px;
+        img {
+          width: 100%;
+          height: 100%;
+          image-rendering: pixelated;
+        }
+      }
 
       .dialog-box {
         position: absolute;
