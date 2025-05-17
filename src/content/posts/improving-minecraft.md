@@ -63,6 +63,8 @@ you with a mace, you're on full health, but you die instantly. That doesn't soun
 would be left with 1 health left, and you'd have precious time to react by pulling out a totem or a shield. Thresholds
 value could be configurable, but I'd say 10 health (5 hearts) is a good starting point.
 
+You can find a plugin that implements this idea <a href="https://modrinth.com/plugin/counterplay" target="_blank">here.</a>
+
 ## Finishing thoughts
 
 This blog post is a culmination of me theorising and experimenting with minecraft mechanics for nearly 5 years now.
