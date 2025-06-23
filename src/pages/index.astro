@@ -22,7 +22,7 @@ const permalink = Astro?.site?.href ?? '/';
       <div class="window visitor-counter" data-title="Visitors counter" aria-label="Visitors counter">
         <ViewCounter />
       </div>
-      <div class="window" data-title="Activity" aria-label="Activity" style="flex: 1; min-width: min(100%, 16rem); ">
+      <div class="window activity" data-title="Activity" aria-label="Activity">
         <ActivityWidget />
       </div>
     </div>
@@ -65,16 +65,24 @@ const permalink = Astro?.site?.href ?? '/';
   }
 
   .visitor-counter {
-    padding: 1.5rem 1rem 0 1rem;
+    padding: 1.5rem 2rem 0 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: min(15rem, 100%);
+    flex: 1;
+    width: 100%;
   }
 
   .socials {
     padding: 2rem 1rem 0 1rem;
-    flex: 1;
+    flex: 2;
     min-width: min(25rem, 100%);
+  }
+
+  .activity {
+    min-width: min(100%, 16rem);
+    flex: 2;
   }
 
   .blog {
@@ -85,7 +93,7 @@ const permalink = Astro?.site?.href ?? '/';
     align-items: center;
     min-width: min(25rem, 100%);
     width: 100%;
-    max-width: min(25rem, 100%);
+    flex: 1;
   }
 
   .window-row {
@@ -110,6 +118,7 @@ const permalink = Astro?.site?.href ?? '/';
       display: flex;
       width: 100%;
       padding-top: 3rem;
+      padding-inline: 0.5rem;
 
       h1 {
         font-weight: 700;
