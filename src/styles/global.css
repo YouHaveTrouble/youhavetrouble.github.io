@@ -218,16 +218,6 @@ td {
   margin: 1em 0;
 }
 
-input[name='theme-toggle'] {
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
-
 .tags {
   display: flex;
   flex-wrap: wrap;

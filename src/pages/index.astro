@@ -12,35 +12,104 @@ const permalink = Astro?.site?.href ?? '/';
 
 <BaseLayout title={title} description={description} permalink={permalink}>
   <div class="home-container">
-    <div class="home-copy">
+    <div class="window home-copy" data-title="Welcome">
       <div>
         <h1>Welcome to my little corner of the interwebs</h1>
         <p>Feel free to check out what I got in store!</p>
       </div>
     </div>
-    <div style="width: 100%;">
-      <ActivityWidget />
-      <ViewCounter/>
+    <div class="window-row">
+      <div class="window visitor-counter" data-title="Visitors counter" aria-label="Visitors counter">
+        <ViewCounter />
+      </div>
+      <div class="window" data-title="Activity" aria-label="Activity" style="flex: 1; min-width: min(100%, 16rem); ">
+        <ActivityWidget />
+      </div>
     </div>
-    <SocialsWidget />
+    <div class="window-row">
+      <div class="window socials" data-title="Socials" aria-label="Socials">
+        <SocialsWidget />
+      </div>
+      <div class="window blog" aria-label="Blog" data-title="Blog">
+        <a href="/blog">I have a blog btw!</a>
+        <a href="/rss.xml" target="_blank">It also has an RSS feed!</a>
+      </div>
+    </div>
+
     <ProjectsFeature />
   </div>
 </BaseLayout>
 
 <style lang="scss">
+
+  .window {
+    border: 2px solid #d0d0d0;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    position: relative;
+    overflow-y: hidden;
+    padding-top: 1.5rem;
+    min-width: 10rem;
+    &::before {
+      content: attr(data-title);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 1.5rem;
+      width: 100%;
+      border-bottom: #d0d0d0 solid 2px;
+      display: flex;
+      flex-direction: row;
+      padding-inline: 0.5rem;
+    }
+  }
+
+  .visitor-counter {
+    padding: 1.5rem 1rem 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .socials {
+    padding: 2rem 1rem 0 1rem;
+    flex: 1;
+    min-width: min(25rem, 100%);
+  }
+
+  .blog {
+    padding: 2rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: min(25rem, 100%);
+    width: 100%;
+    max-width: min(25rem, 100%);
+  }
+
+  .window-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+
   .home-container {
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 2em 0;
-    gap: 2rem;
+    gap: 1.5rem;
 
     .home-copy {
       flex: 1;
       display: flex;
-      flex-direction: row;
-      padding: 0 1em;
+      width: 100%;
+      padding-top: 3rem;
 
       h1 {
         font-weight: 700;
