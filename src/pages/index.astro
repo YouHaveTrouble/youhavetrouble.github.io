@@ -12,56 +12,64 @@ const permalink = Astro?.site?.href ?? '/';
 
 <BaseLayout title={title} description={description} permalink={permalink}>
   <div class="home-container">
-    <div class="window home-copy" data-title="Welcome">
+    <div class="window home-copy" data-title="Welcome" id="welcome">
       <div>
         <h1>Welcome to my little corner of the interwebs</h1>
         <p>Feel free to check out what I got in store!</p>
       </div>
     </div>
     <div class="window-row">
-      <div class="window visitor-counter" data-title="Visitors counter" aria-label="Visitors counter">
+      <div class="window visitor-counter" data-title="Visitors counter" id="visitor-counter" aria-label="Visitors counter">
         <ViewCounter />
       </div>
-      <div class="window activity" data-title="Activity" aria-label="Activity">
+      <div class="window activity" data-title="Activity" id="activity" aria-label="Activity">
         <ActivityWidget />
       </div>
     </div>
     <div class="window-row">
-      <div class="window socials" data-title="Socials" aria-label="Socials">
+      <div class="window socials" data-title="Socials" id="socials" aria-label="Socials">
         <SocialsWidget />
       </div>
-      <div class="window blog" aria-label="Blog" data-title="Blog">
+      <div class="window blog" aria-label="Blog" id="blog" data-title="Blog">
         <a href="/blog">I have a blog btw!</a>
         <a href="/rss.xml" target="_blank">It also has an RSS feed!</a>
       </div>
     </div>
+    <div class="window-row">
+      <div class="window" data-title="Projects" id="projects" aria-label="Projects">
+        <div class="buttons">
+          <button popovertarget="projects-info" popovertargetaction="show" aria-label="Projects info">
+            <span class="icon">ℹ️</span>
+          </button>
+        </div>
+        <div popover="auto" id="projects-info" class="window">
+          <div class="buttons">
+            <button popovertarget="projects-info" popovertargetaction="hide" aria-label="Close projects info">
+              <span class="icon">❌</span>
+            </button>
+          </div>
+          <h2>Projects</h2>
+          <p>
+            Here are some of the projects I'm working on. Most of them are open source, so feel free to check them out!
+            <br>
+            Projects presented here are what I consider in presentable and/or finished state. They might or might not get
+            updates.
+            <br>
+            Most logos generated using <a href="https://huggingface.co/spaces/dalle-mini/dalle-mini" target="_blank">DALL-E mini</a>.
+          </p>
+        </div>
+        <ProjectsFeature />
+      </div>
+    </div>
 
-    <ProjectsFeature />
+
   </div>
 </BaseLayout>
 
 <style lang="scss">
 
-  .window {
-    border: 2px solid #d0d0d0;
-    border-radius: 0.5rem;
-    flex-direction: column;
-    position: relative;
-    overflow-y: hidden;
-    padding-top: 1.5rem;
-    min-width: 10rem;
-    &::before {
-      content: attr(data-title);
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 1.5rem;
-      width: 100%;
-      border-bottom: #d0d0d0 solid 2px;
-      display: flex;
-      flex-direction: row;
-      padding-inline: 0.5rem;
-    }
+  #projects-info {
+    position: fixed;
   }
 
   .visitor-counter {
@@ -83,6 +91,13 @@ const permalink = Astro?.site?.href ?? '/';
   .activity {
     min-width: min(100%, 16rem);
     flex: 2;
+  }
+
+  #projects {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    padding-top: 1.5rem;
   }
 
   .blog {

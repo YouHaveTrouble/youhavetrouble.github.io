@@ -15,6 +15,32 @@
 html {
   overflow-y: scroll;
   scroll-behavior: smooth;
+  *:has(:popover-open) {
+    pointer-events: none;
+    touch-action: none;
+    [popover] {
+      pointer-events: auto;
+      touch-action: auto;
+    }
+    ::backdrop {
+      pointer-events: all;
+      touch-action: manipulation;
+    }
+  }
+}
+
+
+@media (pointer: coarse) {
+  [popover] {
+    &::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  }
 }
 
 p {
@@ -110,6 +136,7 @@ li p {
 a {
   color: inherit;
   transition: color linear 0.15s;
+  display: inline-block;
 }
 
 a:hover {
@@ -242,6 +269,18 @@ iframe {
   border: 0;
 }
 
+button {
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+[popover]::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
 @media (max-width: 1020px) {
   h1 {
     font-size: 3em;
@@ -262,5 +301,47 @@ iframe {
   ol {
     font-size: 1.2rem;
     margin: 1em 0;
+  }
+}
+
+.window {
+  border: 2px solid #d0d0d0;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  position: relative;
+  overflow-y: hidden;
+  padding-top: 1.5rem;
+  min-width: 10rem;
+  background-color: #232222;
+  color: #f3f3f3;
+  &::before {
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5rem;
+    width: 100%;
+    border-bottom: #d0d0d0 solid 2px;
+    display: flex;
+    flex-direction: row;
+    padding-inline: 0.5rem;
+  }
+
+  &[popover] {
+    max-width: calc(100% - 2rem);
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  .buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    top: 0;
+    right: 0;
+    font-size: 0.75rem;
+    height: 1.5rem;
   }
 }

@@ -5,21 +5,12 @@ const projects = await getCollection('projects');
 projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 <section id="projects">
-  <h2>Projects</h2>
-  <p>
-    Here are some of the projects I'm working on. Most of them are open source, so feel free to check them out!
-    <br>
-    Projects presented here are what I consider in presentable and/or finished state. They might or might not get
-    updates.
-    <br>
-    Most logos generated using <a href="https://huggingface.co/spaces/dalle-mini/dalle-mini" target="_blank">DALL-E mini</a>.
-  </p>
   <div class="showcase">
     {
       projects.map((project, index) => {
         return (
-            <article class="project">
-              <div class="icon">
+            <button class="project" popovertarget={`project-${[index]}`} popovertargetaction="show" aria-label={`Project details: ${project.data.name}`}>
+              <span class="icon">
                 <img
                     src={project.data.image}
                     alt=""
@@ -28,12 +19,29 @@ projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
                     decoding="async"
                     draggable="false"
                 />
+              </span>
+              <span class="description">
+                <span>{project.data.name}</span>
+              </span>
+            </button>
+            <div popover id={`project-${[index]}`} class="window popup" aria-label={`Details about ${project.data.name}`} data-title={project.data.name}>
+              <div class="buttons">
+                <button popovertarget={`project-${[index]}`} popovertargetaction="hide" aria-label="Close project details">
+                  <span class="icon">❌</span>
+                </button>
               </div>
-              <div class="description">
-                <h3>{project.data.name}</h3>
-                <span>{project.data.description}</span>
-              </div>
-              <div class="links">
+              <span class="icon">
+                <img
+                    src={project.data.image}
+                    alt=""
+                    aria-hidden="true"
+                    loading={index > 4 ? "lazy" : "eager"}
+                    decoding="async"
+                    draggable="false"
+                />
+              </span>
+              <span>{project.data.description}</span>
+              <span class="links">
                 {
                   project.data.links.map((link) => {
                     return (
@@ -43,8 +51,8 @@ projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
                     )
                   })
                 }
-              </div>
-            </article>
+              </span>
+            </div>
         )
       })
     }
@@ -59,16 +67,37 @@ projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    flex: 1;
+  }
+
+  .popup {
+    position: fixed;
+    padding-top: 2.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: min(40rem, 100%);
+    &:popover-open {
+      display: flex;
+    }
   }
 
   .showcase {
-    display: flex;
+    display: grid;
     flex-direction: row;
-    overflow-x: scroll;
+    grid-template-columns: repeat(auto-fill, 10rem);
     max-width: 100%;
     gap: 0.75rem;
     scroll-snap-type: x mandatory;
-    padding-block: 0.25rem;
+    padding-block: 1.5rem;
+    justify-content: center;
+    padding-inline: 0.5rem;
+    grid-row-gap: 1.5rem;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 300;
+    }
   }
 
   .project {
@@ -77,45 +106,52 @@ projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
     justify-content: space-between;
     align-items: center;
     text-align: start;
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
     border-radius: 0.25rem;
-    background-color: #313131;
-    min-width: min(20rem, calc(100% - 1.5rem));
-    max-width: min(20rem, calc(100% - 1.5rem));
+    width: 100%;
     scroll-snap-align: start;
+    color: #cccccc;
+    font-size: 1rem;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    &:focus-within {
+      background-color: #548e9b;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
 
-    .icon {
-      width: 4rem;
-      height: 4rem;
+  .icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.25rem;
+
+    img {
+      width: 100%;
+      height: 100%;
       border-radius: 0.25rem;
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 0.25rem;
-      }
     }
+  }
 
-    .description {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: center;
-      flex: 1 1;
-      padding-block: 0.5rem;
-    }
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    flex: 1 1;
+  }
 
-    .links {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      line-height: 1;
-      a {
-        white-space: nowrap;
-      }
+  .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    line-height: 1;
+
+    a {
+      white-space: nowrap;
     }
   }
 
