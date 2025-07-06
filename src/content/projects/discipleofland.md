@@ -13,4 +13,7 @@ links: [
     url: "https://github.com/YouHaveTrouble/DiscipleOfLand"
   },
 ]
+technologies:
+  - "vue"
+  - "typescript"
 ---

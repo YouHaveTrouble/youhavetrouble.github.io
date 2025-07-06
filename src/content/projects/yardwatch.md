@@ -17,4 +17,6 @@ links: [
     url: "https://github.com/YouHaveTrouble/YardWatchAPI"
   }
 ]
+technologies:
+  - "java"
 ---

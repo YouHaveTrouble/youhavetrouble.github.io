@@ -9,4 +9,7 @@ links: [
     url: "https://interesting-website.yht.one"
   },
 ]
+technologies:
+  - "typescript"
+  - "astro"
 ---

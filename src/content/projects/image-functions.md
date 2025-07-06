@@ -13,4 +13,7 @@ links: [
     url: "https://github.com/YouHaveTrouble/yht-image-function"
   },
 ]
+technologies:
+  - "typescript"
+  - "astro"
 ---

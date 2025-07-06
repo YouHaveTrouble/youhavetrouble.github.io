@@ -13,4 +13,6 @@ links: [
     url: "https://github.com/YouHaveTrouble/CommandWhitelist"
   },
 ]
+technologies:
+  - "java"
 ---

@@ -13,4 +13,7 @@ links: [
     url: "https://github.com/YouHaveTrouble/GuildMaster"
   },
 ]
+technologies:
+  - "vue"
+  - "typescript"
 ---

@@ -9,4 +9,6 @@ links: [
     url: "https://github.com/YouHaveTrouble/Mobrrr"
   },
 ]
+technologies:
+  - "java"
 ---

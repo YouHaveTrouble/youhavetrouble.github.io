@@ -9,4 +9,6 @@ links: [
     url: "https://dumbforks.yht.one"
   },
 ]
+technologies:
+  - "php"
 ---

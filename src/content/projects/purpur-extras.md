@@ -13,4 +13,6 @@ links: [
     url: "https://github.com/PurpurMC/PurpurExtras"
   },
 ]
+technologies:
+  - "java"
 ---
