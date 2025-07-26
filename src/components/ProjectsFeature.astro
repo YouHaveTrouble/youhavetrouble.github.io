@@ -26,7 +26,7 @@ projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
             </button>
             <div popover id={`project-${[index]}`} class="window popup" aria-label={`Details about ${project.data.name}`} data-title={project.data.name}>
               <div class="buttons">
-                <button popovertarget={`project-${[index]}`} popovertargetaction="hide" aria-label="Close project details">
+                <button popovertarget={`project-${[index]}`} popovertargetaction="hide" tabindex="0" aria-label="Close project details">
                   <span class="icon">❌</span>
                 </button>
               </div>
