@@ -18,7 +18,7 @@ html {
 }
 
 /* evil hack. this will run for all browsers but safari and similar */
-@media (min-resolution: .001dpcm) {
+@media (min-resolution: .001dpcm) and (pointer: coarse) {
   [popover] {
     &::after {
       content: "";
