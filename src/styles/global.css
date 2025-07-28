@@ -15,22 +15,10 @@
 html {
   overflow-y: scroll;
   scroll-behavior: smooth;
-  *:has(:popover-open) {
-    pointer-events: none;
-    touch-action: none;
-    [popover] {
-      pointer-events: auto;
-      touch-action: auto;
-    }
-    ::backdrop {
-      pointer-events: all;
-      touch-action: manipulation;
-    }
-  }
 }
 
-
-@media (pointer: coarse) {
+/* evil hack. this will run for all browsers but safari and similar */
+@media (min-resolution: .001dpcm) {
   [popover] {
     &::after {
       content: "";
