@@ -32,6 +32,11 @@ html {
 
 }
 
+::selection {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
 /* evil hack. this will run for all browsers but safari and similar */
 @media (min-resolution: .001dpcm) and (pointer: coarse) {
   [popover] {
@@ -317,6 +322,7 @@ button {
   min-width: 10rem;
   background-color: #232222;
   color: #f3f3f3;
+  container-type: normal;
   &::before {
     content: attr(data-title);
     position: absolute;
