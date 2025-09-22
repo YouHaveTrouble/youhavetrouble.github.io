@@ -21,6 +21,7 @@
     "remark-smartypants": "^2.1.0",
     "sanitize-html": "^2.13.0",
     "sass": "^1.78.0",
+    "sharp": "^0.34.4",
     "zod": "^3.23.8"
   }
 }
