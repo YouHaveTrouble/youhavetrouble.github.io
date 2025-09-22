@@ -53,6 +53,11 @@ const permalink = `${Astro?.site?.href}blog/${slug}`;
 
   header h1 {
     margin-bottom: 0.7em;
+    display: flex;
+    justify-content: center;
+    view-transition-name: blog-title;
+    width: fit-content;
+    margin-inline: auto;
   }
 
   header p {

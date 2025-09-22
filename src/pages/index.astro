@@ -4,10 +4,17 @@ import ActivityWidget from "../components/ActivityWidget.astro";
 import ViewCounter from "../components/ViewCounter.astro";
 import SocialsWidget from "../components/SocialsWidget.astro";
 import ProjectsFeature from "../components/ProjectsFeature.astro";
+import {getCollection} from "astro:content";
 
 const title = 'Home';
 const description = 'My little corner of the internet.';
 const permalink = Astro?.site?.href ?? '/';
+
+const latestBlogPost = await getCollection("posts")
+  .then(posts => posts.sort(
+      (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+    )
+  ).then(sortedBlogPosts => sortedBlogPosts.length > 0 ? sortedBlogPosts[0] : null);
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink}>
@@ -19,20 +26,62 @@ const permalink = Astro?.site?.href ?? '/';
       </div>
     </div>
     <div class="window-row">
-      <div class="window visitor-counter" data-title="Visitors counter" id="visitor-counter" aria-label="Visitors counter">
-        <ViewCounter />
+      <div class="window visitor-counter" data-title="Visitors counter" id="visitor-counter"
+           aria-label="Visitors counter">
+        <ViewCounter/>
       </div>
       <div class="window activity" data-title="Activity" id="activity" aria-label="Activity">
-        <ActivityWidget />
+        <ActivityWidget/>
       </div>
     </div>
     <div class="window-row">
       <div class="window socials" data-title="Socials" id="socials" aria-label="Socials">
-        <SocialsWidget />
+        <SocialsWidget/>
       </div>
       <div class="window blog" aria-label="Blog" id="blog" data-title="Blog">
-        <a href="/blog">I have a blog btw!</a>
-        <a href="/rss.xml" target="_blank">It also has an RSS feed!</a>
+        <span>Latest article:</span>
+        {
+          latestBlogPost === null ? (
+              <div class="latest-article">
+                <span class="title">No articles yet</span>
+                <span class="excerpt">Come back later to check for new articles!</span>
+              </div>
+          ) : null
+        }
+        <div class="latest-article">
+          <span class="title">{latestBlogPost?.data.title}</span>
+          <span class="excerpt">{latestBlogPost?.data.description}</span>
+        </div>
+        <div class="actions">
+          {
+            latestBlogPost !== null && (
+                  <a href={`/blog/${latestBlogPost?.slug}`} class="button">Read more</a>
+                  <a href="/blog" class="button secondary">All articles</a>
+            )
+          }
+        </div>
+        <div class="buttons">
+          <div class="rss">
+            <a
+                href="/rss.xml"
+                target="_blank"
+                aria-label="RSS feed"
+                title="RSS feed"
+            >
+              <svg height="14px" width="14px" xmlns="http://www.w3.org/2000/svg"
+                   viewBox="-271 273 256 256" xml:space="preserve">
+                <g>
+                  <path fill="white" d="M-271,360v48.9c31.9,0,62.1,12.6,84.7,35.2c22.6,22.6,35.1,52.8,35.1,84.8v0.1h49.1c0-46.6-19-88.7-49.6-119.4
+                    C-182.2,379-224.4,360.1-271,360z"/>
+                  <path fill="white" d="M-237,460.9c-9.4,0-17.8,3.8-24,10s-10,14.6-10,24c0,9.3,3.8,17.7,10,23.9c6.2,6.1,14.6,9.9,24,9.9s17.8-3.7,24-9.9
+                    s10-14.6,10-23.9c0-9.4-3.8-17.8-10-24C-219.2,464.7-227.6,460.9-237,460.9z"/>
+                  <path fill="white" d="M-90.1,348.1c-46.3-46.4-110.2-75.1-180.8-75.1v48.9C-156.8,322-64.1,414.9-64,529h49C-15,458.4-43.7,394.5-90.1,348.1z"/>
+                </g>
+              </svg>
+            </a>
+          </div>
+
+        </div>
       </div>
     </div>
     <div class="window-row">
@@ -44,7 +93,8 @@ const permalink = Astro?.site?.href ?? '/';
         </div>
         <div popover="auto" id="projects-info" class="window">
           <div class="buttons">
-            <button popovertarget="projects-info" popovertargetaction="hide" tabindex="0" aria-label="Close projects info">
+            <button popovertarget="projects-info" popovertargetaction="hide" tabindex="0"
+                    aria-label="Close projects info">
               <span class="icon">❌</span>
             </button>
           </div>
@@ -52,15 +102,17 @@ const permalink = Astro?.site?.href ?? '/';
           <p>
             Here are some of the projects I'm working on. Most of them are open source, so feel free to check them out!
             <br>
-            Projects presented here are what I consider in presentable and/or finished state. They might or might not get
+            Projects presented here are what I consider in presentable and/or finished state. They might or might not
+            get
             updates.
             <br>
-            Most logos generated using <a href="https://huggingface.co/spaces/dalle-mini/dalle-mini" target="_blank">DALL-E mini</a>.
+            Most logos generated using <a href="https://huggingface.co/spaces/dalle-mini/dalle-mini" target="_blank">DALL-E
+            mini</a>.
             <br>
             Inviter logo by <a href="https://slyfoxart.artstation.com/projects" target="_blank">SlyFox</a>
           </p>
         </div>
-        <ProjectsFeature />
+        <ProjectsFeature/>
       </div>
     </div>
 
@@ -112,6 +164,52 @@ const permalink = Astro?.site?.href ?? '/';
     width: 100%;
     gap: 0.5rem;
     flex: 1;
+
+    .latest-article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      background: rgba(255,255,255, 0.05);
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+
+      .title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        view-transition-name: blog-title;
+      }
+
+      .excerpt {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+  }
+
+  .buttons {
+    .rss {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 1/1;
+      padding-bottom: 4px;
+      a {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 
   .window-row {
