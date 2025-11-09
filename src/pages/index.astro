@@ -49,7 +49,7 @@ const latestBlogPost = await getCollection("posts")
           ) : null
         }
         <div class="latest-article">
-          <span class="title">{latestBlogPost?.data.title}</span>
+          <span class="title" style={`view-transition-name: blog-post-${latestBlogPost?.slug}`}>{latestBlogPost?.data.title}</span>
           <span class="excerpt">{latestBlogPost?.data.description}</span>
         </div>
         <div class="actions">
@@ -178,7 +178,6 @@ const latestBlogPost = await getCollection("posts")
       .title {
         font-weight: 600;
         font-size: 1.1rem;
-        view-transition-name: blog-title;
       }
 
       .excerpt {

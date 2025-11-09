@@ -31,7 +31,7 @@ const permalink = `${Astro?.site?.href}blog/${slug}`;
 <BaseLayout title={title} description={description} permalink={permalink} current="blog">
   <header>
     <p>{publishDate} ~ {readTime}</p>
-    <h1>{title}</h1>
+    <h1 style={`view-transition-name: blog-post-${slug}`}>{title}</h1>
     <div class="tags" style="justify-content: center">
       {tags.map(item => (
           <span class="tag">{item}</span>
@@ -55,7 +55,6 @@ const permalink = `${Astro?.site?.href}blog/${slug}`;
     margin-bottom: 0.7em;
     display: flex;
     justify-content: center;
-    view-transition-name: blog-title;
     width: fit-content;
     margin-inline: auto;
   }
