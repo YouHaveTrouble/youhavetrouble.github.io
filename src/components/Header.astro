@@ -2,20 +2,30 @@
 import Logo from './Logo.astro'
 import Nav from './Nav.astro'
 
-const { current = '' } = Astro.props;
+export interface Props {
+    current?: string;
+    showLogo?: boolean;
+}
+
+const {current = '', showLogo = true} = Astro.props;
 ---
+<header>
+    {
+        showLogo && (
+            <Logo width="50" height="50"/>
+        )
+    }
+    <Nav current={current}/>
+</header>
 
 <style>
-  header {
-    display: flex;
-    margin: 0 auto;
-    max-width: var(--wrap);
-    padding: 1em;
-    width: 100%;
-  }
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        max-width: var(--wrap);
+        padding: 1em;
+        width: 100%;
+    }
 </style>
-
-<header>
-  <Logo width="50" height="50" />
-  <Nav current={current} />
-</header>

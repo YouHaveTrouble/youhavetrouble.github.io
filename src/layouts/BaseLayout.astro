@@ -8,8 +8,9 @@ export interface Props {
   description: string;
   permalink: string;
   current?: string;
+  showLogo?: boolean;
 }
-const { title, description, permalink, current } = Astro.props;
+const { title, description, permalink, current, showLogo = true } = Astro.props;
 ---
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@ const { title, description, permalink, current } = Astro.props;
 </head>
 <body>
   <div class="layout">
-    <Header current={current} />
+    <Header current={current} showLogo={showLogo} />
 
     <main>
       <slot />

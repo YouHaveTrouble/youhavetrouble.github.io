@@ -21,7 +21,7 @@ const allPosts= posts.sort((a, b) => new Date(b.data.publishDate).valueOf() - ne
           { index !== 0 && <hr /> }
           <div class="post-item">
             <h2>
-              <a data-astro-prefetch href={href}>{post.data.title}</a>
+              <a data-astro-prefetch href={href} style={`view-transition-name: blogpost-${post.slug}`}>{post.data.title}</a>
             </h2>
             <div class="tags">
               {post.data.tags.map(item => (
@@ -39,7 +39,12 @@ const allPosts= posts.sort((a, b) => new Date(b.data.publishDate).valueOf() - ne
   </div>
 </BaseLayout>
 
-<style>
+<style lang="scss" scoped>
+
+  h1 {
+    view-transition-name: blog;
+  }
+
   h2,
   .post-item-footer {
     font-family: var(--font-family-sans);
