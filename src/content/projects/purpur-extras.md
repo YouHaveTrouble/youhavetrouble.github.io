@@ -1,7 +1,9 @@
 ---
 category: "minecraft"
 name: "PurpurExtras"
-description: "A companion plugin for Purpur server software that adds additional features and improvements."
+description: "A companion plugin for Purpur server software that adds additional features and improvements. This is a
+collection of features that were deemed easier to implement and maintain as a plugin rather then integrating them into
+the server software."
 image: "/assets/projects/purpur.svg"
 links: [
   {

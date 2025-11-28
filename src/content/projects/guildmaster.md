@@ -1,7 +1,8 @@
 ---
 category: "websites"
 name: "Guild Master"
-description: "Adventurer's guild management browser game."
+description: "Adventurer's guild management browser game. Semi-idle game where you manage an adventurer's guild by
+ sending adventurers on quests, updating facilities, and expanding your guild."
 image: "/assets/projects/guildmaster.png"
 links: [
   {

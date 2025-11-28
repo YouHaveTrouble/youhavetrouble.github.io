@@ -1,7 +1,8 @@
 ---
 category: "minecraft"
 name: "Purpur"
-description: "Purpur is a drop-in replacement for Paper servers designed for configurability and new, fun, exciting gameplay features."
+description: "Purpur is a minecraft server software that is a drop-in replacement for Paper servers,designed for
+ configurability and new, fun, exciting gameplay features."
 image: "/assets/projects/purpur.svg"
 links: [
   {

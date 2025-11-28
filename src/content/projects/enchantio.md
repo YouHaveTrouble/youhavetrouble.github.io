@@ -1,7 +1,8 @@
 ---
 category: "minecraft"
 name: "Enchantio"
-description: "Minecraft paper plugin that adds new enchantments that are in line with vanilla Minecraft feel."
+description: "Minecraft paper plugin that adds new enchantments that are in line with vanilla Minecraft feel. One of the
+first paper plugins that uses native enchants instead of hacking them in via custom data."
 image: "/assets/projects/enchantio.png"
 links: [
   {

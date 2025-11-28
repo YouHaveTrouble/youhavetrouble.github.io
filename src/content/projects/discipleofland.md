@@ -1,7 +1,7 @@
 ---
 category: "websites"
 name: "Disciple of Land"
-description: "FFXIV gathering node timers."
+description: "FFXIV gathering node timers. Tracks which gathering nodes of time limited availability are currently available and where to teleport."
 image: "/assets/projects/dol.png"
 links: [
   {
