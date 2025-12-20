@@ -135,7 +135,6 @@
     for (let i = 0; i < chars.length; i++) {
       const span = document.createElement("span");
       span.setAttribute("data-number", chars[i]);
-      span.setAttribute("aria-label", chars[i]);
       span.style.animationDelay = `${i * 0.05}s`;
       viewCounter.appendChild(span);
     }

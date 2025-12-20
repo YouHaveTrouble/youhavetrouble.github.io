@@ -113,6 +113,9 @@ projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
     gap: 0.25rem;
     padding: 0.25rem;
     height: min-content;
+    content-visibility: auto;
+    contain-intrinsic-size: 96px;
+
     &:focus-within {
       background-color: #548e9b;
     }
