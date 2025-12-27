@@ -36,6 +36,21 @@ const latestBlogPost = await getCollection("posts")
     </div>
     <div class="window-row">
       <div class="window socials" data-title="Socials" id="socials" aria-label="Socials">
+        <div class="buttons">
+          <button popovertarget="socials-info" popovertargetaction="show" tabindex="0" title="Socials info">
+            <span class="icon">ℹ️</span>
+          </button>
+        </div>
+        <div popover="auto" id="socials-info" class="window">
+          <div class="buttons">
+            <button popovertarget="socials-info" popovertargetaction="hide" tabindex="0"
+                    aria-label="Close socials info">
+              <span class="icon">❌</span>
+            </button>
+          </div>
+            <h2>Socials</h2>
+            <p>I don't use social media much. Many of the ones listed here are here just as a way to reserve my username<br/> and/or to make it easier to verify that the account belongs to me.</p>
+        </div>
         <SocialsWidget/>
       </div>
       <div class="window blog" aria-label="Blog" id="blog" data-title="Blog">
@@ -87,7 +102,7 @@ const latestBlogPost = await getCollection("posts")
     <div class="window-row">
       <div class="window" data-title="Projects" id="projects" aria-label="Projects">
         <div class="buttons">
-          <button popovertarget="projects-info" popovertargetaction="show" tabindex="0" aria-label="Projects info">
+          <button popovertarget="projects-info" popovertargetaction="show" tabindex="0" title="Projects info">
             <span class="icon">ℹ️</span>
           </button>
         </div>
@@ -122,7 +137,7 @@ const latestBlogPost = await getCollection("posts")
 
 <style lang="scss">
 
-  #projects-info {
+  #projects-info, #socials-info {
     position: fixed;
   }
 
@@ -194,13 +209,16 @@ const latestBlogPost = await getCollection("posts")
   }
 
   .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     .rss {
       display: flex;
       height: 100%;
       justify-content: center;
       align-items: center;
       aspect-ratio: 1/1;
-      padding-bottom: 4px;
       a {
         height: 100%;
         width: 100%;
