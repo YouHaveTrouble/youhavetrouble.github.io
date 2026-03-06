@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCollection} from "astro:content";
+
+const title = 'Writing';
+const description = 'Something that\'s supposed to be storytelling';
+const permalink = `${Astro?.site?.href}writing`;
+
+const posts= await getCollection('writing');
+const allPosts= posts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
+
+const categorizedPosts: Map<string, Array<any>> = new Map();
+allPosts.forEach(post => {
+    const category = post.data.category || 'Uncategorized';
+    if (!categorizedPosts.has(category)) {
+        categorizedPosts.set(category, []);
+    }
+    categorizedPosts.get(category)?.push(post);
+})
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="writing">
+    <div class="container">
+        <h1>Writing</h1>
+        {allPosts.length === 0 && <p>No posts as of yet, hop back later!</p>}
+
+        {
+            categorizedPosts.keys().map(category => {
+                const posts = categorizedPosts.get(category) || [];
+                return (
+                    <div>
+                        <h2 class="category">{category}</h2>
+                        <ul>
+                            {posts.map((post, index) => {
+                                const href = `/writing/${post.slug}`;
+                                return (
+                                        <li class="post-item">
+                                            <a data-astro-prefetch href={href} style={`view-transition-name: writing-entry-${post.slug}`}>{post.data.title}</a>
+                                        </li>
+                                )
+                            })}
+                        </ul>
+
+                    </div>
+                )
+            })
+        }
+
+    </div>
+</BaseLayout>
+
+<style>
+    h2,
+    .post-item-footer {
+        font-family: var(--font-family-sans);
+        font-weight: 700;
+    }
+
+    h2 {
+        text-transform: capitalize;
+    }
+
+    .post-item-date {
+        color: var(--text-secondary);
+        text-align: left;
+        text-transform: uppercase;
+        margin-right: 16px;
+    }
+
+    .post-item {
+        content-visibility: auto;
+        contain-intrinsic-size: 228px;
+    }
+
+    hr {
+        margin: 60px auto;
+    }
+
+    ul {
+        padding-left: 0;
+        li {
+            margin: 0;
+        }
+    }
+</style>

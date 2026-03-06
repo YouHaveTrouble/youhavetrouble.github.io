@@ -4,7 +4,7 @@ import {getCollection} from "astro:content";
 
 const title = 'Blog';
 const description = 'Something that\'s supposed to be thoughts';
-const permalink = `${Astro.site.href}blog`;
+const permalink = `${Astro?.site?.href}blog`;
 
 const posts= await getCollection('posts');
 const allPosts= posts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());

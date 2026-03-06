@@ -121,8 +121,14 @@ p,
 ul,
 ol {
   font-size: 1.3rem;
-  line-height: 1.75em;
+  line-height: 2.25rem;
   margin: 1.2em 0;
+}
+
+.writing {
+  p {
+    margin: 0;
+  }
 }
 
 ol,
@@ -219,7 +225,6 @@ figure {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
