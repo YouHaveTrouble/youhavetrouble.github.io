@@ -1,6 +1,5 @@
 ---
-import {getCollection} from "astro:content";
-import {marked} from 'marked';
+import {type CollectionEntry, getCollection} from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -13,13 +12,16 @@ export async function getStaticPaths() {
         props: {
             title: p.data.title,
             slug: p.slug,
-            content: marked.parse(p.body),
-        }
+        },
     }));
 }
 
-const {slug, title, content} = Astro.props;
+const {slug, title} = Astro.props;
 const permalink = `${Astro?.site?.href}writing/${slug}`;
+const writing = await getCollection('writing');
+const entry: CollectionEntry<'writing'> | undefined = writing.find(e => e.slug === slug);
+if (!entry) throw new Error(`Entry not found: ${slug}`);
+const { Content } = await entry.render();
 ---
 <BaseLayout title={title} description={""} permalink={permalink} current="writing">
     <header>
@@ -27,7 +29,9 @@ const permalink = `${Astro?.site?.href}writing/${slug}`;
         <hr/>
     </header>
     <div class="container writing">
-        <article class="content" set:html={content}></article>
+        <article class="content">
+            <Content />
+        </article>
         <hr/>
     </div>
 </BaseLayout>

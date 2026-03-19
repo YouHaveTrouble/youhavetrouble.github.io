@@ -1,12 +1,10 @@
 ---
-import {getCollection} from "astro:content";
+import {type CollectionEntry, getCollection} from "astro:content";
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Bio from '../../components/Bio.astro';
 import readingTime from 'reading-time';
-import {marked} from 'marked';
 
 export async function getStaticPaths() {
-
     const posts = await getCollection('posts');
     return posts.map(p => ({
         params: {
@@ -18,14 +16,17 @@ export async function getStaticPaths() {
             publishDate: p.data.publishDate,
             slug: p.slug,
             tags: p.data.tags,
-            content: marked.parse(p.body),
             readTime: readingTime(p.body).text,
-        }
+        },
     }));
 }
 
-const {slug, title, description, publishDate, tags, content, readTime} = Astro.props;
+const {slug, title, description, publishDate, tags, readTime} = Astro.props;
 const permalink = `${Astro?.site?.href}blog/${slug}`;
+const posts = await getCollection('posts');
+const entry: CollectionEntry<'posts'> | undefined = posts.find(e => e.slug === slug);
+if (!entry) throw new Error(`Post not found: ${slug}`);
+const { Content } = await entry.render();
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} current="blog">
@@ -40,7 +41,9 @@ const permalink = `${Astro?.site?.href}blog/${slug}`;
         <hr/>
     </header>
     <div class="container">
-        <article class="content" set:html={content}></article>
+        <article class="content">
+            <Content />
+        </article>
         <hr/>
         <Bio/>
     </div>
