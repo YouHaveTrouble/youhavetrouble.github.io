@@ -25,7 +25,7 @@ allPosts.forEach(post => {
         {allPosts.length === 0 && <p>No posts as of yet, hop back later!</p>}
 
         {
-            categorizedPosts.keys().map(category => {
+            categorizedPosts.keys().toArray().map(category => {
                 const posts = categorizedPosts.get(category) || [];
                 return (
                     <div>
