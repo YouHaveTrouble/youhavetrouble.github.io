@@ -7,7 +7,7 @@ image: "/assets/projects/killthetower.png"
 links: [
   {
     text: "Website",
-    url: "https://www.nexusmods.com/slaythespire2/mods/1051"
+    url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3747590353"
   },
   {
     text: "Source",
