@@ -64,13 +64,13 @@ const latestBlogPost = await getCollection("posts")
           ) : null
         }
         <div class="latest-article">
-          <span class="title" style={`view-transition-name: blog-post-${latestBlogPost?.slug}`}>{latestBlogPost?.data.title}</span>
+          <span class="title" style={`view-transition-name: blog-post-${latestBlogPost?.id}`}>{latestBlogPost?.data.title}</span>
           <span class="excerpt">{latestBlogPost?.data.description}</span>
         </div>
         <div class="actions">
           {
             latestBlogPost !== null && (
-                  <a href={`/blog/${latestBlogPost?.slug}`} class="button">Read more</a>
+                  <a href={`/blog/${latestBlogPost?.id}`} class="button">Read more</a>
                   <a href="/blog" class="button secondary">All articles</a>
             )
           }

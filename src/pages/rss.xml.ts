@@ -11,8 +11,8 @@ export async function GET(context: { site: any; }) {
         description: 'Something that\'s supposed to be thoughts.',
         site: context.site,
         items: posts.map((post) => ({
-            link: `/blog/${post.slug}/`,
-            content: sanitizeHtml(marked.parse(post.body), {
+            link: `/blog/${post.id}/`,
+            content: sanitizeHtml(marked.parse(post.body ?? ""), {
                 allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
             }),
             pubDate: new Date(post.data.publishDate),

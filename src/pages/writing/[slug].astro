@@ -1,5 +1,5 @@
 ---
-import {type CollectionEntry, getCollection} from "astro:content";
+import {type CollectionEntry, getCollection, render} from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -7,11 +7,11 @@ export async function getStaticPaths() {
     const posts = await getCollection('writing');
     return posts.map(p => ({
         params: {
-            slug: p.slug
+            slug: p.id
         },
         props: {
             title: p.data.title,
-            slug: p.slug,
+            slug: p.id,
         },
     }));
 }
@@ -19,9 +19,9 @@ export async function getStaticPaths() {
 const {slug, title} = Astro.props;
 const permalink = `${Astro?.site?.href}writing/${slug}`;
 const writing = await getCollection('writing');
-const entry: CollectionEntry<'writing'> | undefined = writing.find(e => e.slug === slug);
+const entry: CollectionEntry<'writing'> | undefined = writing.find(e => e.id === slug);
 if (!entry) throw new Error(`Entry not found: ${slug}`);
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 <BaseLayout title={title} description={""} permalink={permalink} current="writing">
     <header>

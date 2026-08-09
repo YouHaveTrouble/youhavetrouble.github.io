@@ -15,16 +15,16 @@ const allPosts= posts.sort((a, b) => new Date(b.data.publishDate).valueOf() - ne
     <h1>Blog</h1>
     {allPosts.length === 0 && <p>No posts as of yet, hop back later!</p>}
     {allPosts.map((post, index) => {
-      const href = `/blog/${post.slug}`;
+      const href = `/blog/${post.id}`;
       return (
         <div>
           { index !== 0 && <hr /> }
           <div class="post-item">
             <h2>
-              <a data-astro-prefetch href={href} style={`view-transition-name: blog-post-${post.slug}`}>{post.data.title}</a>
+              <a data-astro-prefetch href={href} style={`view-transition-name: blog-post-${post.id}`}>{post.data.title}</a>
             </h2>
             <div class="tags">
-              {post.data.tags.map(item => (
+              {post.data.tags.map((item: string) => (
                   <span class="tag">{item}</span>
               ))}
             </div>

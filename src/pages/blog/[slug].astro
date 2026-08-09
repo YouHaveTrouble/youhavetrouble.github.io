@@ -1,5 +1,5 @@
 ---
-import {type CollectionEntry, getCollection} from "astro:content";
+import {type CollectionEntry, getCollection, render} from "astro:content";
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Bio from '../../components/Bio.astro';
 import readingTime from 'reading-time';
@@ -8,15 +8,15 @@ export async function getStaticPaths() {
     const posts = await getCollection('posts');
     return posts.map(p => ({
         params: {
-            slug: p.slug
+            slug: p.id
         },
         props: {
             title: p.data.title,
             description: p.data.description,
             publishDate: p.data.publishDate,
-            slug: p.slug,
+            slug: p.id,
             tags: p.data.tags,
-            readTime: readingTime(p.body).text,
+            readTime: readingTime(p.body ?? "").text,
         },
     }));
 }
@@ -24,9 +24,9 @@ export async function getStaticPaths() {
 const {slug, title, description, publishDate, tags, readTime} = Astro.props;
 const permalink = `${Astro?.site?.href}blog/${slug}`;
 const posts = await getCollection('posts');
-const entry: CollectionEntry<'posts'> | undefined = posts.find(e => e.slug === slug);
+const entry: CollectionEntry<'posts'> | undefined = posts.find(e => e.id === slug);
 if (!entry) throw new Error(`Post not found: ${slug}`);
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} current="blog">
@@ -34,7 +34,7 @@ const { Content } = await entry.render();
         <p>{publishDate} ~ {readTime}</p>
         <h1 style={`view-transition-name: blog-post-${slug}`}>{title}</h1>
         <div class="tags" style="justify-content: center">
-            {tags.map(item => (
+            {tags.map((item: string) => (
                     <span class="tag">{item}</span>
             ))}
         </div>

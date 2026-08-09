@@ -43,7 +43,7 @@ projects.sort((a, b) => a.data.name.localeCompare(b.data.name));
               <span>{project.data.description}</span>
               <span class="links">
                 {
-                  project.data.links.map((link) => {
+                  project.data.links.map((link: {url: string, text: string}) => {
                     return (
                         <span>
                           <a href={link.url} target="_blank">{link.text}</a>
